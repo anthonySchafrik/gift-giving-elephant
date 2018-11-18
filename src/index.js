@@ -7,6 +7,7 @@ import promise from "redux-promise";
 
 import reducers from "./reducers";
 import HomePage from "./components/HomePage";
+import Header from "./components/Header";
 
 const cresteStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
@@ -14,6 +15,7 @@ ReactDOM.render(
   <Provider store={cresteStoreWithMiddleware(reducers)}>
     <BrowserRouter>
       <div>
+        <Header />
         <Switch>
           <Route path="/" component={HomePage} />
         </Switch>
