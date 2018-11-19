@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default class HomePage extends React.Component {
   constructor(props) {
@@ -15,10 +16,9 @@ export default class HomePage extends React.Component {
           down. If you are looking for your group or group info, click on My
           Group.
         </p>
-        <select>
-          <option value="newGroup">New Group</option>
-          <option value="myGroup">My Group</option>
-        </select>
+        <Link to="/newGroup">
+          <button>New Group</button>
+        </Link>
         <div>
           <h3>What is the Gift Giving Elephant?</h3>
           <p>
