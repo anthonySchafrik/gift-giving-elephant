@@ -9,6 +9,11 @@ app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static(path.join(__dirname, "../public")));
 
+app.post("/newGroup", (req, res) => {
+  console.log(req.body);
+  res.send("Thanks for the request");
+});
+
 let port = 2020;
 app.listen(port, () => {
   log(`server is listing on port ${port}`);
