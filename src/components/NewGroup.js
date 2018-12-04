@@ -22,43 +22,20 @@ export default class NewGroup extends Component {
     const { groupName, groupPass, totalPeople, totalCashAmount } = this.state;
 
     let newGroup = {
-      groupName: groupName,
-      groupPass: groupPass,
-      totalPeople: totalPeople,
-      totalCashAmount: totalCashAmount
+      groupName,
+      groupPass,
+      totalPeople,
+      totalCashAmount
     };
     axios.post("/newGroup", newGroup).then(function(res) {
-      console.log(res);
+      alert("Group created.");
     });
   }
 
   handleNewGroupOption(event) {
     let id = event.target.id;
     let value = event.target.value;
-    this.setNewGroupState(id, value);
-  }
-
-  setNewGroupState(id, value) {
-    if (id === "groupName") {
-      this.setState({ groupName: value });
-    }
-
-    if (id === "groupPass") {
-      this.setState({ groupPass: value });
-    }
-
-    if (id === "groupPassCheck") {
-      this.setState({ groupPassCheck: value });
-    }
-
-    if (id === "totalPeople") {
-      this.setState({ totalPeople: Number(value) });
-    }
-
-    if (id === "totalCashAmount") {
-      this.setState({ totalCashAmount: Number(value) });
-    }
-    return "Error";
+    this.setState({ [id]: value });
   }
 
   whichGroupToRender() {
