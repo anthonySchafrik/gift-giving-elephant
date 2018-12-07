@@ -8,7 +8,7 @@ import promise from "redux-promise";
 import reducers from "./reducers";
 import HomePage from "./components/HomePage";
 import Header from "./components/Header";
-import NewGroup from "./components/NewGroup";
+import Group from "./components/Group";
 
 const cresteStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
@@ -18,7 +18,7 @@ ReactDOM.render(
       <div>
         <Header />
         <Switch>
-          <Route path="/newGroup" component={NewGroup} />
+          <Route path="/Group" component={Group} />
           <Route path="/" component={HomePage} />
         </Switch>
       </div>

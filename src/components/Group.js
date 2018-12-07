@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-export default class NewGroup extends Component {
+export default class Group extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      groupOptions: ""
+      groupOptions: "",
+      groupName: "",
+      groupPass: "",
+      totalPeople: "",
+      totalCashAmount: ""
     };
     this.whichGroupToRender = this.whichGroupToRender.bind(this);
     this.handleGroupState = this.handleGroupState.bind(this);
@@ -24,11 +28,12 @@ export default class NewGroup extends Component {
     let newGroup = {
       groupName,
       groupPass,
-      totalPeople,
-      totalCashAmount
+      totalCashAmount,
+      totalPeople
     };
     axios.post("/newGroup", newGroup).then(function(res) {
-      alert("Group created.");
+      debugger;
+      alert(res.data);
     });
   }
 
@@ -61,18 +66,19 @@ export default class NewGroup extends Component {
             id="groupPassCheck"
             type="password"
           />
-          <div />
-          <label>How many People?:</label>
-          <input
-            onChange={handleNewGroupOption}
-            id="totalPeople"
-            type="number"
-          />
+
           <div />
           <label>Total Cash Amount</label>
           <input
             onChange={handleNewGroupOption}
             id="totalCashAmount"
+            type="number"
+          />
+          <div />
+          <label>How many People?:</label>
+          <input
+            onChange={handleNewGroupOption}
+            id="totalPeople"
             type="number"
           />
           <div />
