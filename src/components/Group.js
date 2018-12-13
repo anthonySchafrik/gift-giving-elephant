@@ -32,7 +32,6 @@ export default class Group extends Component {
       totalPeople
     };
     axios.post("/newGroup", newGroup).then(function(res) {
-      debugger;
       alert(res.data);
     });
   }
