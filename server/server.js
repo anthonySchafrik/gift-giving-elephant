@@ -19,34 +19,12 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.post('/newGroup', (req, res) => {
   const { groupName, groupPass, totalCashAmount, totalPeople } = req.body;
 
-  // error handling
-  // let hasError = false;
-  // let errorMessage = '';
-
   // new group going to db
   let sql = `INSERT INTO Groups (name, password, total, cash) VALUES('${groupName}', '${groupPass}', '${totalCashAmount}', '${totalPeople}')`;
 
   let result = insert(sql)
-
+  
   res.send(result);
-  //  adding new group to db
-  // db.query(sql, (err, result) => {
-  //   debugger;
-  //   if (err) {
-  //     log(`ERROR L23 => ${err}`);
-  //     hasError = true;
-  //     errorMessage = err.message;
-  //   } else {
-  //     log("inserted Group sotred", result);
-  //   }
-  // });
-  // // error handling
-  // debugger;
-  // if (hasError) {
-  //   res.send(errorMessage);
-  // } else {
-  //   res.send("Created Group");
-  // }
   
 });
 
