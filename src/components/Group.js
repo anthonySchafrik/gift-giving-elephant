@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+import CreateGroup from "./CreateGroup";
+
 export default class Group extends Component {
   constructor(props) {
     super(props);
@@ -32,12 +34,11 @@ export default class Group extends Component {
       totalPeople
     };
 
-    let passwordMatch = this.passwordCheck()
-    
+    let passwordMatch = this.passwordCheck();
+
     if (passwordMatch) {
-      axios.post("/newGroup", newGroup)
-        .then(function(res) {
-          alert(res.data);
+      axios.post("/newGroup", newGroup).then(function(res) {
+        alert(res.data);
       });
     } else {
       alert("Password does not match");
@@ -46,13 +47,12 @@ export default class Group extends Component {
 
   passwordCheck() {
     const { groupPass, groupPassCheck } = this.state;
-    
+
     if (groupPass === groupPassCheck) {
-     return true;
+      return true;
     } else {
       return false;
     }
-
   }
 
   handleNewGroupOption(event) {
@@ -67,41 +67,10 @@ export default class Group extends Component {
 
     if (groupOptions === "makeNewGroup") {
       return (
-        <div>
-          <label>Group Name:</label>
-          <input onChange={handleNewGroupOption} id="groupName" type="text" />
-          <div />
-          <label>Group Password:</label>
-          <input
-            onChange={handleNewGroupOption}
-            id="groupPass"
-            type="password"
-          />
-          <div />
-          <label>Group Password Check:</label>
-          <input
-            onChange={handleNewGroupOption}
-            id="groupPassCheck"
-            type="password"
-          />
-
-          <div />
-          <label>Total Cash Amount</label>
-          <input
-            onChange={handleNewGroupOption}
-            id="totalCashAmount"
-            type="number"
-          />
-          <div />
-          <label>How many People?:</label>
-          <input
-            onChange={handleNewGroupOption}
-            id="totalPeople"
-            type="number"
-          />
-          <div />
-          <button onClick={handleCreateGroup}>Crate New Group</button>
-        </div>
+        <CreateGroup
+          handleNewGroupOption={handleNewGroupOption}
+          handleCreateGroup={handleCreateGroup}
+        />
       );
     }
     if (groupOptions === "editGroup") {
