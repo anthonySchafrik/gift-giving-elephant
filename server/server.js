@@ -7,7 +7,7 @@ const app = express();
 const log = console.log;
 
 const { db } = require('../database/index');
-const  { insert } = require('./utils');
+// const  { insert } = require('./utils');
 
 const port = 2020;
 
@@ -21,11 +21,19 @@ app.post('/newGroup', (req, res) => {
 
   // new group going to db
   let sql = `INSERT INTO Groups (name, password, total, cash) VALUES('${groupName}', '${groupPass}', '${totalCashAmount}', '${totalPeople}')`;
-
-  let result = insert(sql)
-  
-  res.send(result);
-  
+  db.query(sql, (err, result) => {
+    if (err) {
+      log(`ERROR L7 query.js => ${err}`);
+      if (err.detail === `Key (name)=(a) already exists.`) {
+        res.send('Group name all ready Taken')
+      } else {
+        res.send('Something went wrong try again latter');
+      }
+    } else {
+      log('inserted Group sotred', result);
+      res.send('Group created');
+    }
+  }); 
 });
 
 // server start

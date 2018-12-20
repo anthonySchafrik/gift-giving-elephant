@@ -31,9 +31,28 @@ export default class Group extends Component {
       totalCashAmount,
       totalPeople
     };
-    axios.post("/newGroup", newGroup).then(function(res) {
-      alert(res.data);
-    });
+
+    let passwordMatch = this.passwordCheck()
+    
+    if (passwordMatch) {
+      axios.post("/newGroup", newGroup)
+        .then(function(res) {
+          alert(res.data);
+      });
+    } else {
+      alert("Password does not match");
+    }
+  }
+
+  passwordCheck() {
+    const { groupPass, groupPassCheck } = this.state;
+    
+    if (groupPass === groupPassCheck) {
+     return true;
+    } else {
+      return false;
+    }
+
   }
 
   handleNewGroupOption(event) {

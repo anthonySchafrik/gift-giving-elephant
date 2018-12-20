@@ -8,7 +8,7 @@ module.exports.insert = (sql) => {
       return err.message;
     } else {
       log('inserted Group sotred', result);
-      return 'Group created';
+      return result;
     }
   });
 }
