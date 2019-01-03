@@ -1,22 +1,24 @@
-const bodyParser = require('body-parser');
-const express = require('express');
-const path = require('path');
+const bodyParser = require("body-parser");
+const express = require("express");
+const path = require("path");
 
 const app = express();
 
 const log = console.log;
 
-const { db } = require('../database/index');
+const { db } = require("../database/index");
+
+//can not get the utils to return message to pass on to client after group was created or error
 // const  { insert } = require('./utils');
 
 const port = 2020;
 
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true}));
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, "../dist")));
 
 // New group post req
-app.post('/newGroup', (req, res) => {
+app.post("/newGroup", (req, res) => {
   const { groupName, groupPass, totalCashAmount, totalPeople } = req.body;
 
   // new group going to db
@@ -25,15 +27,15 @@ app.post('/newGroup', (req, res) => {
     if (err) {
       log(`ERROR L7 query.js => ${err}`);
       if (err.detail === `Key (name)=(a) already exists.`) {
-        res.send('Group name all ready Taken')
+        res.send("Group name all ready Taken");
       } else {
-        res.send('Something went wrong try again latter');
+        res.send("Something went wrong try again latter");
       }
     } else {
-      log('inserted Group sotred', result);
-      res.send('Group created');
+      log("inserted Group sotred", result);
+      res.send("Group created");
     }
-  }); 
+  });
 });
 
 // server start

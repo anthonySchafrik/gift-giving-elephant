@@ -1,19 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import { BrowserRouter, Route, Switch, HashRouter } from "react-router-dom";
-import promise from "redux-promise";
+import { createStore } from "redux";
+import { Route, Switch, HashRouter } from "react-router-dom";
+import { hot } from "react-hot-loader";
 
 import reducers from "./reducers";
-import HomePage from "./components/HomePage";
 import Header from "./components/Header";
+import HomePage from "./components/HomePage";
 import Group from "./components/Group";
+import LoginSighup from "./components/LoginSighup";
 
-const cresteStoreWithMiddleware = applyMiddleware(promise)(createStore);
+const store = createStore(reducers);
 
 ReactDOM.render(
-  <Provider store={cresteStoreWithMiddleware(reducers)}>
+  <Provider store={store}>
     <HashRouter>
       <div>
         <Header />

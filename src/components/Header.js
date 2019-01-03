@@ -1,20 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-export default class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
+const Header = () => {
+  return (
+    <div>
+      <Link to="/">
+        <button>Home</button>
+      </Link>
+      <button>Account Setting</button>
+      <button>Log Out</button>
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <div>
-        <Link to="/">
-          <button>Home</button>
-        </Link>
-        <button>Account Setting</button>
-        <button>Log Out</button>
-      </div>
-    );
-  }
-}
+export default Header;

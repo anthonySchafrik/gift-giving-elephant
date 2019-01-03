@@ -1,5 +1,8 @@
 import { combineReducers } from "redux";
+import groupReducer from "./groupReducer";
 
-const rootReducer = combineReducers({});
+const reducer = combineReducers({
+  newGroup: groupReducer
+});
 
-export default rootReducer;
+export default reducer;

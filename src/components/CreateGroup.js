@@ -1,8 +1,33 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
-export default class CreateGroup extends Component {
+import { newGroupInfo } from "../actions";
+
+class CreateGroup extends Component {
+  constructor(props) {
+    super(props);
+    this.handleNewGroupOption = this.handleNewGroupOption.bind(this);
+  }
+
+  passwordCheck() {
+    const { groupPass, groupPassCheck } = this.state;
+
+    if (groupPass === groupPassCheck) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  handleNewGroupOption(event) {
+    let id = event.target.id;
+    let value = event.target.value;
+    this.props.newGroupInfo(id, value);
+  }
+
   render() {
-    const { handleNewGroupOption, handleCreateGroup } = this.props;
+    const { handleNewGroupOption } = this;
+    console.log(this.props.newGroup);
     return (
       <div>
         <label>Group Name:</label>
@@ -28,8 +53,23 @@ export default class CreateGroup extends Component {
         <label>How many People?:</label>
         <input onChange={handleNewGroupOption} id="totalPeople" type="number" />
         <div />
-        <button onClick={handleCreateGroup}>Crate New Group</button>
+        <button
+          onClick={() => {
+            console.log("i was clicked");
+          }}
+        >
+          Crate New Group
+        </button>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return { newGroup: state.newGroup };
+};
+
+export default connect(
+  mapStateToProps,
+  { newGroupInfo }
+)(CreateGroup);
