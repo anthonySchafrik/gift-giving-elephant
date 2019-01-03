@@ -1,4 +1,4 @@
-const NEW_GROUP_INFO = "NEW_GROUP_INFO";
+export const NEW_GROUP_INFO = "NEW_GROUP_INFO";
 
 export const newGroupInfo = (key, value) => {
   return {
