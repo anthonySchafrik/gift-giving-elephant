@@ -25,11 +25,11 @@ app.post("/newGroup", (req, res) => {
   let sql = `INSERT INTO Groups (name, password, total, cash) VALUES('${groupName}', '${groupPass}', '${totalCashAmount}', '${totalPeople}')`;
   db.query(sql, (err, result) => {
     if (err) {
-      log(`ERROR L7 query.js => ${err}`);
-      if (err.detail === `Key (name)=(a) already exists.`) {
+      log(`ERROR L28 query.js => ${err}`);
+      if (err.code === "23505") {
         res.send("Group name all ready Taken");
       } else {
-        res.send("Something went wrong try again latter");
+        res.send(`Something went wrong text error code to Anthony ${err.code}`);
       }
     } else {
       log("inserted Group sotred", result);

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import axios from "axios";
 
 import { newGroupInfo } from "../actions";
 
@@ -7,16 +8,7 @@ class CreateGroup extends Component {
   constructor(props) {
     super(props);
     this.handleNewGroupOption = this.handleNewGroupOption.bind(this);
-  }
-
-  passwordCheck() {
-    const { groupPass, groupPassCheck } = this.state;
-
-    if (groupPass === groupPassCheck) {
-      return true;
-    } else {
-      return false;
-    }
+    this.handleCreateNewGroup = this.handleCreateNewGroup.bind(this);
   }
 
   handleNewGroupOption(event) {
@@ -25,9 +17,29 @@ class CreateGroup extends Component {
     this.props.newGroupInfo(id, value);
   }
 
+  passwordCheck() {
+    const { groupPass, groupPassCheck } = this.props.newGroup;
+    if (groupPass === groupPassCheck) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  handleCreateNewGroup() {
+    const { newGroup } = this.props;
+
+    if (this.passwordCheck()) {
+      axios.post("/newGroup", newGroup).then(res => {
+        alert(res.data);
+      });
+    } else {
+      alert("Password did not match");
+    }
+  }
+
   render() {
-    const { handleNewGroupOption } = this;
-    console.log(this.props.newGroup);
+    const { handleNewGroupOption, handleCreateNewGroup } = this;
     return (
       <div>
         <label>Group Name:</label>
@@ -53,13 +65,7 @@ class CreateGroup extends Component {
         <label>How many People?:</label>
         <input onChange={handleNewGroupOption} id="totalPeople" type="number" />
         <div />
-        <button
-          onClick={() => {
-            console.log("i was clicked");
-          }}
-        >
-          Crate New Group
-        </button>
+        <button onClick={handleCreateNewGroup}>Crate New Group</button>
       </div>
     );
   }
