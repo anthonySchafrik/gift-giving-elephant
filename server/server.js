@@ -39,7 +39,6 @@ app.post("/newGroup", (req, res) => {
 });
 
 app.get("/getGroupInfo", (req, res) => {
-  debugger;
   let name = req.query.name;
   let sql = `select * from groups where name='${name}'`;
 

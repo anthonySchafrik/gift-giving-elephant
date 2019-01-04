@@ -1,4 +1,3 @@
-import axios from "axios";
 import getGroupInfo from "../apis/getGroupInfo";
 import regeneratorRuntime from "regenerator-runtime";
 
@@ -27,5 +26,5 @@ export const fetchGroupName = name => {
 export const fetchGroupInfo = name => async dispatch => {
   const responce = await getGroupInfo.get(`/?name=${name}`);
 
-  dispatch({ type: FETCH_GROUP_INFO, payload: responce.data });
+  dispatch({ type: FETCH_GROUP_INFO, payload: responce.data[0] });
 };
