@@ -24,13 +24,25 @@ class EditGroup extends Component {
   }
 
   render() {
-    console.log(this.props);
-    return (
-      <div>
-        <input onChange={this.handleGroupName} type="text" id="name" />
-        <button onClick={this.getGroupTest}>click</button>
-      </div>
-    );
+    const { name, password, total, cash } = this.props.groupInfo;
+    console.log(this.props.groupInfo);
+    if (Object.keys(this.props.groupInfo).length === 0) {
+      return (
+        <div>
+          <input onChange={this.handleGroupName} type="text" id="name" />
+          <button onClick={this.getGroupTest}>click</button>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <p>Group Name {name}</p>
+          <p>Group Password {password}</p>
+          <p>Total amount of people {total}</p>
+          <p>Total cash perperson {cash}</p>
+        </div>
+      );
+    }
   }
 }
 //
