@@ -22,7 +22,7 @@ app.post("/newGroup", (req, res) => {
   const { groupName, groupPass, totalCashAmount, totalPeople } = req.body;
 
   // new group going to db
-  let sql = `INSERT INTO Groups (name, password, total, cash) VALUES('${groupName}', '${groupPass}', '${totalCashAmount}', '${totalPeople}')`;
+  let sql = `INSERT INTO groups (name, password, total, cash) VALUES('${groupName}', '${groupPass}', '${totalCashAmount}', '${totalPeople}')`;
   db.query(sql, (err, result) => {
     if (err) {
       log(`ERROR L28 query.js => ${err}`);
@@ -40,16 +40,24 @@ app.post("/newGroup", (req, res) => {
 
 app.get("/getGroupInfo", (req, res) => {
   let name = req.query.name;
-  let sql = `select * from groups where name='${name}'`;
+  let sql = `SELECT * from groups WHERE name='${name}'`;
 
   db.query(sql, (err, result) => {
-    console.log(result.rows);
     res.send(result.rows);
   });
 });
 
 app.patch("/updateGroup", (req, res) => {
-  console.log();
+  console.log(req.body);
+  const { id, groupName, groupPass, totalCashAmount, totalPeople } = req.body;
+
+  let sql = `UPDATE groups SET id = '${id}', name = '${groupName}', password = '${groupPass}', total = '${Number(
+    totalCashAmount
+  )}', cash = '${Number(totalPeople)}'`;
+  // db.query(sql, (err, result) => {
+  //   debugger;
+  // });
+  res.send(sql);
 });
 
 // server start

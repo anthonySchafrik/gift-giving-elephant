@@ -43,12 +43,7 @@ class CreateGroup extends Component {
     return (
       <div>
         <label>Group Name:</label>
-        <input
-          onChange={handleNewGroupOption}
-          id="groupName"
-          type="text"
-          placeHolder={this.props.newGroup.groupName}
-        />
+        <input onChange={handleNewGroupOption} id="groupName" type="text" />
         <div />
         <label>Group Password:</label>
         <input onChange={handleNewGroupOption} id="groupPass" type="password" />

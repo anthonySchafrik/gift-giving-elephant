@@ -34,7 +34,9 @@ class EditGroup extends Component {
   handleGroupUpdate() {
     let id = this.props.groupInfo.id;
     let updateGroup = { ...this.props.newGroup, id: id };
-    console.log(updateGroup);
+    axios.patch("/updateGroup", updateGroup).then(res => {
+      console.log(res);
+    });
   }
 
   render() {
