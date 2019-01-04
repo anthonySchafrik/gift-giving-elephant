@@ -35,7 +35,7 @@ class EditGroup extends Component {
     let id = this.props.groupInfo.id;
     let updateGroup = { ...this.props.newGroup, id: id };
     axios.patch("/updateGroup", updateGroup).then(res => {
-      console.log(res);
+      alert(res.data);
     });
   }
 
@@ -83,6 +83,7 @@ class EditGroup extends Component {
             type="number"
             placeholder={cash}
           />
+          <br />
           <button onClick={handleGroupUpdate}>Update Group</button>
         </div>
       );

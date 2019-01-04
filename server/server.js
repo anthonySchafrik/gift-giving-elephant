@@ -48,16 +48,15 @@ app.get("/getGroupInfo", (req, res) => {
 });
 
 app.patch("/updateGroup", (req, res) => {
-  console.log(req.body);
   const { id, groupName, groupPass, totalCashAmount, totalPeople } = req.body;
 
-  let sql = `UPDATE groups SET id = '${id}', name = '${groupName}', password = '${groupPass}', total = '${Number(
+  let sql = `UPDATE groups SET name = '${groupName}', password = '${groupPass}', total = '${Number(
     totalCashAmount
-  )}', cash = '${Number(totalPeople)}'`;
-  // db.query(sql, (err, result) => {
-  //   debugger;
-  // });
-  res.send(sql);
+  )}', cash = '${Number(totalPeople)}' WHERE id = '${id}'`;
+
+  db.query(sql, (err, result) => {});
+
+  res.send("Group updated");
 });
 
 // server start
