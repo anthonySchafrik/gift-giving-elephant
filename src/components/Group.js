@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import CreateGroup from "./CreateGroup";
+import EditGroup from "./EditGroup";
 
 class Group extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class Group extends Component {
       return <CreateGroup />;
     }
     if (groupOptions === "editGroup") {
-      return <div>edit group switch statment works</div>;
+      return <EditGroup />;
     }
   }
 

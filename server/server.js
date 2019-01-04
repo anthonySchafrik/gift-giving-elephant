@@ -38,6 +38,17 @@ app.post("/newGroup", (req, res) => {
   });
 });
 
+app.get("/getGroupInfo", (req, res) => {
+  debugger;
+  let name = req.query.name;
+  let sql = `select * from groups where name='${name}'`;
+
+  db.query(sql, (err, result) => {
+    console.log(result.rows);
+    res.send(result.rows);
+  });
+});
+
 // server start
 app.listen(port, () => {
   log(`server is listing on port ${port}`);
