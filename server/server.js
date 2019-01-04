@@ -48,6 +48,10 @@ app.get("/getGroupInfo", (req, res) => {
   });
 });
 
+app.patch("/updateGroup", (req, res) => {
+  console.log();
+});
+
 // server start
 app.listen(port, () => {
   log(`server is listing on port ${port}`);
