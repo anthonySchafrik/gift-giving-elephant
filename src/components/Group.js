@@ -11,8 +11,8 @@ class Group extends Component {
       groupOptions: ""
     };
 
-    this.whichGroupToRender = this.whichGroupToRender.bind(this);
     this.handleGroupState = this.handleGroupState.bind(this);
+    this.whichGroupToRender = this.whichGroupToRender.bind(this);
   }
 
   handleGroupState(event) {

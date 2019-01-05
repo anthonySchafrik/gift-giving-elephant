@@ -3,32 +3,29 @@ import { connect } from "react-redux";
 import axios from "axios";
 
 import { fetchGroupName, fetchGroupInfo, newGroupInfo } from "../actions";
-import CreateGroup from "./CreateGroup";
 
 class EditGroup extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      showGroupInfo: false
+    };
 
-    this.handleGroupName = this.handleGroupName.bind(this);
     this.handleFetchGroupinfo = this.handleFetchGroupinfo.bind(this);
-    this.handleNewGroupOption = this.handleNewGroupOption.bind(this);
+    this.handleGroupName = this.handleGroupName.bind(this);
     this.handleGroupUpdate = this.handleGroupUpdate.bind(this);
+    this.handleNewGroupOption = this.handleNewGroupOption.bind(this);
+    this.toggleShowGroupInfo = this.toggleShowGroupInfo.bind(this);
+  }
+  handleFetchGroupinfo() {
+    let name = this.props.getName;
+    this.props.fetchGroupInfo(name);
+    this.toggleShowGroupInfo();
   }
 
   handleGroupName(event) {
     let name = event.target.value;
     this.props.fetchGroupName(name);
-  }
-
-  handleFetchGroupinfo() {
-    let name = this.props.getName;
-    this.props.fetchGroupInfo(name);
-  }
-
-  handleNewGroupOption(event) {
-    let id = event.target.id;
-    let value = event.target.value;
-    this.props.newGroupInfo(id, value);
   }
 
   handleGroupUpdate() {
@@ -39,10 +36,26 @@ class EditGroup extends Component {
     });
   }
 
+  handleNewGroupOption(event) {
+    let id = event.target.id;
+    let value = event.target.value;
+    this.props.newGroupInfo(id, value);
+  }
+
+  toggleShowGroupInfo() {
+    const { showGroupInfo } = this.state;
+    this.setState({ showGroupInfo: !showGroupInfo });
+  }
+
   render() {
     const { name, password, total, cash } = this.props.groupInfo;
-    const { handleNewGroupOption, handleGroupUpdate } = this;
-    if (Object.keys(this.props.groupInfo).length === 0) {
+    const {
+      handleNewGroupOption,
+      handleGroupUpdate,
+      toggleShowGroupInfo
+    } = this;
+    const { showGroupInfo } = this.state;
+    if (!showGroupInfo) {
       return (
         <div>
           <input onChange={this.handleGroupName} type="text" id="name" />
@@ -85,12 +98,13 @@ class EditGroup extends Component {
           />
           <br />
           <button onClick={handleGroupUpdate}>Update Group</button>
+          <button onClick={toggleShowGroupInfo}>Clear Search</button>
         </div>
       );
     }
   }
 }
-//
+
 const mapStateToProps = state => {
   return {
     getName: state.getGroupName.name,
