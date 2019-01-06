@@ -10,7 +10,7 @@ import reducers from "./reducers";
 import Header from "./components/Header";
 import HomePage from "./components/HomePage";
 import Group from "./components/Group";
-import LoginSighup from "./components/LoginSighup";
+import Sighup from "./components/Sighup";
 
 const store = createStore(reducers, applyMiddleware(thunk));
 
