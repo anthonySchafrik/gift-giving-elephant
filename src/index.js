@@ -21,7 +21,7 @@ ReactDOM.render(
         <Header />
         <Switch>
           <Route path="/Group" component={Group} />
-          <Route path="/" component={HomePage} />
+          <Route path="/" component={Sighup} />
         </Switch>
       </div>
     </HashRouter>

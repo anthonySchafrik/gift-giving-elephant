@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static(path.join(__dirname, "../dist")));
 
-// New group post req
+// new group post req
 app.post("/newGroup", (req, res) => {
   const { groupName, groupPass, totalCashAmount, totalPeople } = req.body;
 
@@ -25,7 +25,7 @@ app.post("/newGroup", (req, res) => {
   let sql = `INSERT INTO groups (name, password, total, cash) VALUES('${groupName}', '${groupPass}', '${totalCashAmount}', '${totalPeople}')`;
   db.query(sql, (err, result) => {
     if (err) {
-      log(`ERROR L28 query.js => ${err}`);
+      log(`ERROR L28s => ${err}`);
       if (err.code === "23505") {
         res.send("Group name all ready Taken");
       } else {
@@ -38,6 +38,37 @@ app.post("/newGroup", (req, res) => {
   });
 });
 
+// add a new user to the database
+app.post("/createUser", (req, res) => {
+  const {
+    email,
+    firstName,
+    hobbyOne,
+    hobbyThree,
+    hobbyTwo,
+    lastName,
+    password,
+    userName
+  } = req.body;
+
+  let sql = `INSERT INTO Users (username, firstname, lastname, email,  password, hobbyone, hobbytwo, hobbythree) VALUES('${userName}', '${firstName}', '${lastName}', '${email}', '${password}', '${hobbyOne}', '${hobbyTwo}', '${hobbyThree}')`;
+
+  db.query(sql, (err, result) => {
+    if (err) {
+      log(`ERROR L56s => ${err}`);
+      if (err.code === "23505") {
+        res.send("User name all ready Taken");
+      } else {
+        res.send(`Something went wrong text error code to Anthony ${err.code}`);
+      }
+    } else {
+      log("inserted Group sotred", result);
+      res.send("User created");
+    }
+  });
+});
+
+// query to get a group info
 app.get("/getGroupInfo", (req, res) => {
   let name = req.query.name;
   let sql = `SELECT * from groups WHERE name='${name}'`;
@@ -47,6 +78,7 @@ app.get("/getGroupInfo", (req, res) => {
   });
 });
 
+//update group
 app.patch("/updateGroup", (req, res) => {
   const { id, groupName, groupPass, totalCashAmount, totalPeople } = req.body;
 

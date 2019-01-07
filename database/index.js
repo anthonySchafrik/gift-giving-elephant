@@ -18,13 +18,13 @@ const sqlGroups =
 client.query(sqlGroups, err => {
   if (err) {
     if (err.code === "42P07") {
-      console.log("Table all ready there");
+      console.log("Groups Table all ready there");
     } else {
       console.log(`Error in database => ${err}`);
       throw err;
     }
   } else {
-    console.log("Table created");
+    console.log("Groups Table created");
   }
 });
 
@@ -35,13 +35,13 @@ const sqlUsers =
 client.query(sqlUsers, err => {
   if (err) {
     if (err.code === "42P07") {
-      console.log("Table all ready there");
+      console.log("Users Table all ready there");
     } else {
       console.log(`Error in database => ${err}`);
       console.log(err.code);
     }
   } else {
-    console.log("Table created");
+    console.log("Users Table created");
   }
 });
 

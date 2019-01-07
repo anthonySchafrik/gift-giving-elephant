@@ -1,3 +1,14 @@
 body {
   background-color: lightgray;
 }
+
+.sigh-up-container {
+  margin: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sigh-up-input {
+  margin-bottom: 2%;
+}
