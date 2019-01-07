@@ -1,6 +1,6 @@
 import { NEW_GROUP_INFO } from "../actions/index";
 
-const groupReducer = (state = {}, action) => {
+export default (state = {}, action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -17,5 +17,3 @@ const groupReducer = (state = {}, action) => {
       };
   }
 };
-
-export default groupReducer;

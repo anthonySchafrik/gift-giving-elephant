@@ -23,9 +23,8 @@ class CreateGroup extends Component {
   }
 
   handleNewGroupOption(event) {
-    let id = event.target.id;
-    let value = event.target.value;
-    this.props.newGroupInfo(id, value);
+    const { id: key, value } = event.target;
+    this.props.newGroupInfo(key, value);
   }
 
   passwordCheck() {
