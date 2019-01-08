@@ -20,7 +20,7 @@ class Sighup extends Component {
     const { sighUpInfo } = this.props;
     if (this.passwordCheck()) {
       axios.post("/createUser", sighUpInfo).then(res => {
-        console.log(res);
+        alert(res.data);
       });
     } else {
       alert("Passwords did not match");

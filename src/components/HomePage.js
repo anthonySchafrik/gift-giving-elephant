@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -10,6 +11,7 @@ class HomePage extends Component {
 
     this.handleLogIn = this.handleLogIn.bind(this);
     this.LogInSubmit = this.LogInSubmit.bind(this);
+    this.handleSuccessfullLogIn = this.handleSuccessfullLogIn.bind(this);
   }
   handleLogIn(event) {
     const { id: key, value } = event.target;
@@ -17,7 +19,25 @@ class HomePage extends Component {
   }
 
   LogInSubmit() {
-    console.log(this.props.logInInfo);
+    const { username, password } = this.props.logInInfo;
+    axios
+      .get(`/logUserIn`, {
+        params: {
+          username,
+          password
+        }
+      })
+      .then(res => {
+        if (res.data === true) {
+          this.handleSuccessfullLogIn("logedIn", true);
+        } else {
+          alert(res.data);
+        }
+      });
+  }
+
+  handleSuccessfullLogIn(key, value) {
+    this.props.logInInfoInput(key, value);
   }
 
   render() {

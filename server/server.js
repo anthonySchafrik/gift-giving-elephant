@@ -71,10 +71,32 @@ app.post("/createUser", (req, res) => {
 // query to get a group info
 app.get("/getGroupInfo", (req, res) => {
   let name = req.query.name;
-  let sql = `SELECT * from groups WHERE name='${name}'`;
+  let sql = `SELECT * from groups WHERE name = '${name}'`;
 
   db.query(sql, (err, result) => {
     res.send(result.rows);
+  });
+});
+
+// query to log in to site
+app.get("/logUserIn", (req, res) => {
+  const { username, password } = req.query;
+
+  let sql = `SELECT * from Users WHERE username = '${username}'`;
+
+  db.query(sql, (err, result) => {
+    if (err) {
+      res.send(`Something went wrong error code: ${err.code}`);
+    }
+    if (result.rows.length) {
+      if (result.rows[0].password === password) {
+        res.send(true);
+      } else {
+        res.send("Password did not match");
+      }
+    } else {
+      res.send("User not found");
+    }
   });
 });
 
