@@ -13,7 +13,7 @@ client.connect(err => {
 
 //Creates Groups tale
 const sqlGroups =
-  "CREATE TABLE Groups (id SERIAL, name VARCHAR(255) UNIQUE, password VARCHAR(255), total INT, cash INT)";
+  "CREATE TABLE Groups (id SERIAL primary key, name VARCHAR(255) UNIQUE, password VARCHAR(255), total INT, cash INT)";
 
 client.query(sqlGroups, err => {
   if (err) {
@@ -30,7 +30,7 @@ client.query(sqlGroups, err => {
 
 //creates User table
 const sqlUsers =
-  "CREATE TABLE Users (id SERIAL, username VARCHAR(10) UNIQUE, firstname VARCHAR(255), lastname VARCHAR(255), email VARCHAR(255), password VARCHAR(10), hobbyOne VARCHAR(255),  hobbyTwo VARCHAR(255), hobbyThree VARCHAR(255))";
+  "CREATE TABLE Users (id SERIAL primary key, username VARCHAR(10) UNIQUE, firstname VARCHAR(255), lastname VARCHAR(255), email VARCHAR(255), password VARCHAR(10), hobbyOne VARCHAR(255),  hobbyTwo VARCHAR(255), hobbyThree VARCHAR(255))";
 
 client.query(sqlUsers, err => {
   if (err) {
@@ -42,6 +42,22 @@ client.query(sqlUsers, err => {
     }
   } else {
     console.log("Users Table created");
+  }
+});
+
+const sqlUsersGroup =
+  "CREATE TABLE UsersGroup (id SERIAL primary key, userID INT references Users(id), groupID INT references Groups(id))";
+
+client.query(sqlUsersGroup, err => {
+  if (err) {
+    if (err.code === "42P07") {
+      console.log("UsersGroup Table all ready there");
+    } else {
+      console.log(`Error in database => ${err}`);
+      console.log(err.code);
+    }
+  } else {
+    console.log("UsersGroup Table created");
   }
 });
 
