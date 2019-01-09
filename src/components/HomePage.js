@@ -83,6 +83,12 @@ class HomePage extends Component {
             <li>All gifts must show up to the event wrapped.</li>
             <li>Last but not least - everyone have fun!</li>
           </ol>
+          <img
+            src="../css/images/GGELogo.png"
+            alt="Site Logo"
+            width="700"
+            height="500"
+          />
         </div>
       );
     } else {

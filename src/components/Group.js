@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import CreateGroup from "./CreateGroup";
 import EditGroup from "./EditGroup";
+import JoinGroup from "./JoinGroup";
 
 class Group extends Component {
   constructor(props) {
@@ -28,6 +29,9 @@ class Group extends Component {
     if (groupOptions === "editGroup") {
       return <EditGroup />;
     }
+    if (groupOptions === "joinGroup") {
+      return <JoinGroup />;
+    }
   }
 
   render() {
@@ -40,6 +44,9 @@ class Group extends Component {
         </button>
         <button onClick={handleGroupState} value="editGroup">
           Edit Group
+        </button>
+        <button onClick={handleGroupState} value="joinGroup">
+          Join Group
         </button>
         {whichGroupToRender()}
         <div />
