@@ -13,11 +13,13 @@ class Sighup extends Component {
 
   handleSighUpInfo(event) {
     const { id: key, value } = event.target;
+
     this.props.newUserInfo(key, value);
   }
 
   handleUserSighUp() {
     const { sighUpInfo } = this.props;
+
     if (this.passwordCheck()) {
       axios.post("/createUser", sighUpInfo).then(res => {
         alert(res.data);

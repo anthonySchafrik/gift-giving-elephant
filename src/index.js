@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
 import { Route, Switch, HashRouter } from "react-router-dom";
 import { hot } from "react-hot-loader";
+import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
-import reducers from "./reducers";
+import Group from "./components/Group";
 import Header from "./components/Header";
 import HomePage from "./components/HomePage";
-import Group from "./components/Group";
+import reducers from "./reducers";
 import SighUp from "./components/Sighup";
 
 const store = createStore(reducers, applyMiddleware(thunk));

@@ -10,11 +10,16 @@ class HomePage extends Component {
     super(props);
 
     this.handleLogIn = this.handleLogIn.bind(this);
-    this.LogInSubmit = this.LogInSubmit.bind(this);
     this.handleSuccessfullLogIn = this.handleSuccessfullLogIn.bind(this);
+    this.LogInSubmit = this.LogInSubmit.bind(this);
   }
+
   handleLogIn(event) {
     const { id: key, value } = event.target;
+    this.props.logInInfoInput(key, value);
+  }
+
+  handleSuccessfullLogIn(key, value) {
     this.props.logInInfoInput(key, value);
   }
 
@@ -34,10 +39,6 @@ class HomePage extends Component {
           alert(res.data);
         }
       });
-  }
-
-  handleSuccessfullLogIn(key, value) {
-    this.props.logInInfoInput(key, value);
   }
 
   render() {

@@ -20,20 +20,6 @@ class Group extends Component {
     this.setState({ groupOptions: event.target.value });
   }
 
-  whichGroupToRender() {
-    const { groupOptions } = this.state;
-
-    if (groupOptions === "makeNewGroup") {
-      return <CreateGroup />;
-    }
-    if (groupOptions === "editGroup") {
-      return <EditGroup />;
-    }
-    if (groupOptions === "joinGroup") {
-      return <JoinGroup />;
-    }
-  }
-
   render() {
     const { whichGroupToRender, handleGroupState } = this;
     return (
@@ -52,6 +38,20 @@ class Group extends Component {
         <div />
       </div>
     );
+  }
+
+  whichGroupToRender() {
+    const { groupOptions } = this.state;
+
+    if (groupOptions === "makeNewGroup") {
+      return <CreateGroup />;
+    }
+    if (groupOptions === "editGroup") {
+      return <EditGroup />;
+    }
+    if (groupOptions === "joinGroup") {
+      return <JoinGroup />;
+    }
   }
 }
 

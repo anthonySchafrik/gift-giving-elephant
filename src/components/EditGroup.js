@@ -17,6 +17,7 @@ class EditGroup extends Component {
     this.handleNewGroupOption = this.handleNewGroupOption.bind(this);
     this.toggleShowGroupInfo = this.toggleShowGroupInfo.bind(this);
   }
+
   handleFetchGroupinfo() {
     let name = this.props.getName;
     this.props.fetchGroupInfo(name);

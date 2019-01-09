@@ -10,6 +10,7 @@ class CreateGroup extends Component {
     this.handleCreateNewGroup = this.handleCreateNewGroup.bind(this);
     this.handleNewGroupOption = this.handleNewGroupOption.bind(this);
   }
+
   handleCreateNewGroup() {
     const { newGroup } = this.props;
 

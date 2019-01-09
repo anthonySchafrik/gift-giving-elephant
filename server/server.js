@@ -17,11 +17,10 @@ app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static(path.join(__dirname, "../dist")));
 
-// new group post req
+// new group req
 app.post("/newGroup", (req, res) => {
   const { groupName, groupPass, totalCashAmount, totalPeople } = req.body;
 
-  // new group going to db
   let sql = `INSERT INTO groups (name, password, total, cash) VALUES('${groupName}', '${groupPass}', '${totalCashAmount}', '${totalPeople}')`;
   db.query(sql, (err, result) => {
     if (err) {
@@ -38,7 +37,7 @@ app.post("/newGroup", (req, res) => {
   });
 });
 
-// add a new user to the database
+// New new user req
 app.post("/createUser", (req, res) => {
   const {
     email,
@@ -78,7 +77,7 @@ app.get("/getGroupInfo", (req, res) => {
   });
 });
 
-// query to log in to site
+// query to log in site
 app.get("/logUserIn", (req, res) => {
   const { username, password } = req.query;
 
@@ -100,7 +99,7 @@ app.get("/logUserIn", (req, res) => {
   });
 });
 
-//update group
+//query to update group
 app.patch("/updateGroup", (req, res) => {
   const { id, groupName, groupPass, totalCashAmount, totalPeople } = req.body;
 
