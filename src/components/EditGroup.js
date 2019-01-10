@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 
-import { fetchGroupName, fetchGroupInfo, newGroupInfo } from "../actions";
+import {
+  fetchGroupName,
+  fetchGroupInfo,
+  handleInfo,
+  NEW_GROUP_INFO
+} from "../actions";
 
 class EditGroup extends Component {
   constructor(props) {
@@ -40,7 +45,7 @@ class EditGroup extends Component {
   handleNewGroupOption(event) {
     let id = event.target.id;
     let value = event.target.value;
-    this.props.newGroupInfo(id, value);
+    this.props.handleInfo(id, value, NEW_GROUP_INFO);
   }
 
   toggleShowGroupInfo() {
@@ -116,5 +121,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchGroupName, fetchGroupInfo, newGroupInfo }
+  { fetchGroupName, fetchGroupInfo, handleInfo }
 )(EditGroup);

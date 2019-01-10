@@ -3,6 +3,7 @@ import regeneratorRuntime from "regenerator-runtime";
 
 export const FETCH_GROUP_INFO = "FETCH_GROUP_INFO";
 export const GET_GROUP_NAME = "NEW_GROUP_INFO";
+export const JOIN_GROUP_INFO = "JOIN_GROUP_INFO";
 export const LOG_IN_INFO = "LOG_IN_INFO";
 export const NEW_GROUP_INFO = "NEW_GROUP_INFO";
 export const SIGH_UP_INFO = "SIGH_UP_INFO";
@@ -21,6 +22,17 @@ export const fetchGroupName = name => {
     }
   };
 };
+
+export const handleInfo = (key, value, type) => {
+  return {
+    type,
+    payload: {
+      [key]: value
+    }
+  };
+};
+
+/*
 
 export const logInInfoInput = (key, value) => {
   return {
@@ -48,3 +60,4 @@ export const newUserInfo = (key, value) => {
     }
   };
 };
+*/

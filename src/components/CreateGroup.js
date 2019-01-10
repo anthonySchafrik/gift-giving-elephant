@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 
-import { newGroupInfo } from "../actions";
+import { handleInfo, NEW_GROUP_INFO } from "../actions";
 
 class CreateGroup extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class CreateGroup extends Component {
 
   handleNewGroupOption(event) {
     const { id: key, value } = event.target;
-    this.props.newGroupInfo(key, value);
+    this.props.handleInfo(key, value, NEW_GROUP_INFO);
   }
 
   passwordCheck() {
@@ -76,5 +76,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { newGroupInfo }
+  { handleInfo }
 )(CreateGroup);

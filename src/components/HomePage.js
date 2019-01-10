@@ -3,7 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { logInInfoInput } from "../actions";
+import { handleInfo, LOG_IN_INFO } from "../actions";
 
 class HomePage extends Component {
   constructor(props) {
@@ -16,11 +16,11 @@ class HomePage extends Component {
 
   handleLogIn(event) {
     const { id: key, value } = event.target;
-    this.props.logInInfoInput(key, value);
+    this.props.handleInfo(key, value, LOG_IN_INFO);
   }
 
   handleSuccessfullLogIn(key, value) {
-    this.props.logInInfoInput(key, value);
+    this.props.handleInfo(key, value, LOG_IN_INFO);
   }
 
   LogInSubmit() {
@@ -44,6 +44,7 @@ class HomePage extends Component {
   render() {
     const { logedIn } = this.props.logInInfo;
     const { handleLogIn, LogInSubmit } = this;
+
     if (logedIn) {
       return (
         <div>
@@ -115,5 +116,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { logInInfoInput }
+  { handleInfo }
 )(HomePage);

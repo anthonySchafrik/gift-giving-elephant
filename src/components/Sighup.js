@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 
-import { newUserInfo } from "../actions";
+import { handleInfo, SIGH_UP_INFO } from "../actions";
 
 class Sighup extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class Sighup extends Component {
   handleSighUpInfo(event) {
     const { id: key, value } = event.target;
 
-    this.props.newUserInfo(key, value);
+    this.props.handleInfo(key, value, SIGH_UP_INFO);
   }
 
   handleUserSighUp() {
@@ -123,5 +123,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { newUserInfo }
+  { handleInfo }
 )(Sighup);

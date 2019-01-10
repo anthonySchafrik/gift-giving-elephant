@@ -6,7 +6,7 @@ This is a White Elephant Gift app for my friends and family to use around the ho
 
 # 1
 
-Download repo from
+Download repo from https://github.com/anthonySchafrik/gift-giving-elephant
 
 # 2
 
