@@ -14,7 +14,10 @@ class JoinGroup extends Component {
 
   handleJoinGroup() {
     const { joinGroupInfo } = this.props;
-    console.log(joinGroupInfo);
+
+    axios.post("/joinGroup", joinGroupInfo).then(res => {
+      alert(res.data);
+    });
   }
 
   handleGroupInfo(event) {
@@ -36,6 +39,8 @@ class JoinGroup extends Component {
         <input onChange={handleGroupInfo} type="text" id="groupName" />
         <label>Group password: </label>
         <input onChange={handleGroupInfo} type="password" id="password" />
+        <label>User Name: </label>
+        <input onChange={handleGroupInfo} type="text" id="userName" />
         <button onClick={handleJoinGroup}>Join Group</button>
       </div>
     );
