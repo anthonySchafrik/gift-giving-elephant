@@ -1,7 +1,31 @@
 import React, { Component } from "react";
+import axios from "axios";
+import { connect } from "react-redux";
+
+import { handleInfo, JOIN_GROUP_INFO } from "../actions";
 
 class JoinGroup extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleJoinGroup = this.handleJoinGroup.bind(this);
+    this.handleGroupInfo = this.handleGroupInfo.bind(this);
+  }
+
+  handleJoinGroup() {
+    const { joinGroupInfo } = this.props;
+    console.log(joinGroupInfo);
+  }
+
+  handleGroupInfo(event) {
+    const { id: key, value } = event.target;
+
+    this.props.handleInfo(key, value, JOIN_GROUP_INFO);
+  }
+
   render() {
+    const { handleGroupInfo, handleJoinGroup } = this;
+
     return (
       <div>
         <h3>
@@ -9,12 +33,21 @@ class JoinGroup extends Component {
           join.
         </h3>
         <label>Group Name: </label>
-        <input type="text" />
+        <input onChange={handleGroupInfo} type="text" id="groupName" />
         <label>Group password: </label>
-        <input type="password" />
+        <input onChange={handleGroupInfo} type="password" id="password" />
+        <button onClick={handleJoinGroup}>Join Group</button>
       </div>
     );
   }
 }
 
-export default JoinGroup;
+const mapStateToProps = state => {
+  const { joinGroupInfo } = state;
+  return { joinGroupInfo };
+};
+
+export default connect(
+  mapStateToProps,
+  { handleInfo }
+)(JoinGroup);

@@ -67,10 +67,46 @@ app.post("/createUser", (req, res) => {
   });
 });
 
+//join gorup
+app.post("/joinGroup", (req, res) => {
+  const { groupName, password, userName } = req.body;
+
+  let group, user;
+
+  let sqlFindGroup = `SELECT * FROM groups WHERE name = '${groupName}'`;
+  let sqlFinduser = `SELECT * FROM users WHERE username = '${userName}'`;
+
+  db.query(sqlFindGroup)
+    .then(result1 => {
+      group = result1.rows;
+      return db.query(sqlFinduser);
+    })
+    .then(result2 => {
+      user = result2.rows;
+    })
+    .then(() => {
+      let userId = user[0].id;
+      let groupId = group[0].id;
+      let sqlJoinGroup = `INSERT INTO UsersGroup (userid, groupid) VALUES ('${userId}', '${groupId}')`;
+
+      return db.query(sqlJoinGroup, (err, result) => {
+        if (err) {
+          res.send(`Error => ${err}`);
+        } else {
+          res.send(`You have joined Group ${group[0].name}`);
+        }
+      });
+    });
+
+  // setTimeout(() => {
+  //   log(user, group);
+  // }, 1000);
+});
+
 // query to get a group info
 app.get("/getGroupInfo", (req, res) => {
   let name = req.query.name;
-  let sql = `SELECT * from groups WHERE name = '${name}'`;
+  let sql = `SELECT * FROM groups WHERE name = '${name}'`;
 
   db.query(sql, (err, result) => {
     res.send(result.rows);

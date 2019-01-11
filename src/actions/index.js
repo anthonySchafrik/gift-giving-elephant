@@ -33,7 +33,6 @@ export const handleInfo = (key, value, type) => {
 };
 
 /*
-
 export const logInInfoInput = (key, value) => {
   return {
     type: LOG_IN_INFO,

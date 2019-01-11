@@ -1,3 +1,5 @@
+import { JOIN_GROUP_INFO } from "../actions";
+
 export default (state = {}, action) => {
   const { type, payload } = action;
   switch (type) {
