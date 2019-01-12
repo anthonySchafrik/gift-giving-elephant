@@ -1,16 +1,35 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+import { handleInfo, LOG_IN_INFO } from "../actions";
+
+const Header = props => {
   return (
     <div>
       <Link to="/">
         <button>Home</button>
       </Link>
-      <button>Account Setting</button>
-      <button>Log Out</button>
+      <Link to="/Account">
+        <button>Account Setting</button>
+      </Link>
+      <button
+        onClick={() => {
+          props.handleInfo("logedIn", false, LOG_IN_INFO);
+        }}
+      >
+        Log Out
+      </button>
     </div>
   );
 };
 
-export default Header;
+const mapStateToProps = state => {
+  const { logInInfo } = state;
+  return { logInInfo };
+};
+
+export default connect(
+  null,
+  { handleInfo }
+)(Header);

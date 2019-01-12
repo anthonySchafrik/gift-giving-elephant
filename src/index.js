@@ -6,6 +6,7 @@ import { hot } from "react-hot-loader";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
+import AccountSetting from "./components/AccountSetting";
 import Group from "./components/Group";
 import Header from "./components/Header";
 import HomePage from "./components/HomePage";
@@ -20,6 +21,7 @@ ReactDOM.render(
       <div>
         <Header />
         <Switch>
+          <Route path="/Account" component={AccountSetting} />
           <Route path="/SighUp" component={SighUp} />
           <Route path="/Group" component={Group} />
           <Route path="/" component={HomePage} />

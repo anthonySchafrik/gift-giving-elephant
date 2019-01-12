@@ -97,10 +97,6 @@ app.post("/joinGroup", (req, res) => {
         }
       });
     });
-
-  // setTimeout(() => {
-  //   log(user, group);
-  // }, 1000);
 });
 
 // query to get a group info
