@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, "../dist")));
 app.post("/newGroup", (req, res) => {
   const { groupName, groupPass, totalCashAmount, totalPeople } = req.body;
 
-  let sql = `INSERT INTO groups (name, password, total, cash) VALUES('${groupName}', '${groupPass}', '${totalCashAmount}', '${totalPeople}')`;
+  let sql = `INSERT INTO Groups (name, password, total, cash) VALUES('${groupName}', '${groupPass}', '${totalCashAmount}', '${totalPeople}');`;
   db.query(sql, (err, result) => {
     if (err) {
       log(`ERROR L28s => ${err}`);
@@ -50,7 +50,7 @@ app.post("/createUser", (req, res) => {
     userName
   } = req.body;
 
-  let sql = `INSERT INTO Users (username, firstname, lastname, email,  password, hobbyone, hobbytwo, hobbythree) VALUES('${userName}', '${firstName}', '${lastName}', '${email}', '${password}', '${hobbyOne}', '${hobbyTwo}', '${hobbyThree}')`;
+  let sql = `INSERT INTO Users (username, firstname, lastname, email,  password, hobbyone, hobbytwo, hobbythree) VALUES('${userName}', '${firstName}', '${lastName}', '${email}', '${password}', '${hobbyOne}', '${hobbyTwo}', '${hobbyThree}');`;
 
   db.query(sql, (err, result) => {
     if (err) {
@@ -73,8 +73,8 @@ app.post("/joinGroup", (req, res) => {
 
   let group, user;
 
-  let sqlFindGroup = `SELECT * FROM groups WHERE name = '${groupName}'`;
-  let sqlFinduser = `SELECT * FROM users WHERE username = '${userName}'`;
+  let sqlFindGroup = `SELECT * FROM Groups WHERE name = '${groupName}';`;
+  let sqlFinduser = `SELECT * FROM Users WHERE username = '${userName}';`;
 
   db.query(sqlFindGroup)
     .then(result1 => {
@@ -87,7 +87,7 @@ app.post("/joinGroup", (req, res) => {
     .then(() => {
       let userId = user[0].id;
       let groupId = group[0].id;
-      let sqlJoinGroup = `INSERT INTO UsersGroup (userid, groupid) VALUES ('${userId}', '${groupId}')`;
+      let sqlJoinGroup = `INSERT INTO UsersGroup (userid, groupid) VALUES ('${userId}', '${groupId}');`;
 
       return db.query(sqlJoinGroup, (err, result) => {
         if (err) {
@@ -102,7 +102,7 @@ app.post("/joinGroup", (req, res) => {
 // query to get a group info
 app.get("/getGroupInfo", (req, res) => {
   let name = req.query.name;
-  let sql = `SELECT * FROM groups WHERE name = '${name}'`;
+  let sql = `SELECT * FROM Groups WHERE name = '${name}';`;
 
   db.query(sql, (err, result) => {
     res.send(result.rows);
@@ -113,7 +113,7 @@ app.get("/getGroupInfo", (req, res) => {
 app.get("/logUserIn", (req, res) => {
   const { username, password } = req.query;
 
-  let sql = `SELECT * from Users WHERE username = '${username}'`;
+  let sql = `SELECT * FROM Users WHERE username = '${username}';`;
 
   db.query(sql, (err, result) => {
     if (err) {
@@ -135,9 +135,9 @@ app.get("/logUserIn", (req, res) => {
 app.patch("/updateGroup", (req, res) => {
   const { id, groupName, groupPass, totalCashAmount, totalPeople } = req.body;
 
-  let sql = `UPDATE groups SET name = '${groupName}', password = '${groupPass}', total = '${Number(
+  let sql = `UPDATE Groups SET name = '${groupName}', password = '${groupPass}', total = '${Number(
     totalCashAmount
-  )}', cash = '${Number(totalPeople)}' WHERE id = '${id}'`;
+  )}', cash = '${Number(totalPeople)}' WHERE id = '${id}';`;
 
   db.query(sql, (err, result) => {});
 

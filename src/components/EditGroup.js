@@ -35,8 +35,22 @@ class EditGroup extends Component {
   }
 
   handleGroupUpdate() {
-    let id = this.props.groupInfo.id;
-    let updateGroup = { ...this.props.newGroup, id: id };
+    const { id, name, password, cash, total } = this.props.groupInfo;
+    const {
+      groupName,
+      groupPass,
+      totalCashAmount,
+      totalPeople
+    } = this.props.updateGroup;
+
+    let updateGroup = {
+      id: id,
+      groupName: groupName || name,
+      groupPass: groupPass || password,
+      totalCashAmount: totalCashAmount || cash,
+      totalPeople: total || totalPeople
+    };
+
     axios.patch("/updateGroup", updateGroup).then(res => {
       alert(res.data);
     });
@@ -115,7 +129,7 @@ const mapStateToProps = state => {
   return {
     getName: state.getGroupName.name,
     groupInfo: state.groupInfo,
-    newGroup: state.newGroup
+    updateGroup: state.group
   };
 };
 

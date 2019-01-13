@@ -1,5 +1,9 @@
 const pg = require("pg");
-const conString = "postgres://postgres:postgres@localhost:5432/GGE";
+require("dotenv").config();
+const ELEPHANTSQL_KEY = process.env.ELEPHANTSQL_KEY;
+
+// const conString = "postgres://postgres:postgres@localhost:5432/GGE";
+const conString = `postgres://kerrlcbi:${ELEPHANTSQL_KEY}@baasu.db.elephantsql.com:5432/kerrlcbi`;
 
 const client = new pg.Client(conString);
 

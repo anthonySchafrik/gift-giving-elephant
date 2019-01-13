@@ -71,7 +71,7 @@ class CreateGroup extends Component {
 }
 
 const mapStateToProps = state => {
-  return { newGroup: state.newGroup };
+  return { newGroup: state.group };
 };
 
 export default connect(

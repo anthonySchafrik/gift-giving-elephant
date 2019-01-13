@@ -12,7 +12,7 @@ const reducer = combineReducers({
   groupInfo: fetchGroupInfo,
   joinGroupInfo: joinGroupReducer,
   logInInfo,
-  newGroup: groupReducer,
+  group: groupReducer,
   sighUpInfo
 });
 
