@@ -131,6 +131,21 @@ app.get("/logUserIn", (req, res) => {
   });
 });
 
+//query to get user info
+app.get("/userInfo", (req, res) => {
+  let user = req.query.user;
+
+  sql = `SELECT * FROM Users WHERE username = '${user}';`;
+
+  db.query(sql, (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(result.rows);
+    }
+  });
+});
+
 //query to update group
 app.patch("/updateGroup", (req, res) => {
   const { id, groupName, groupPass, totalCashAmount, totalPeople } = req.body;

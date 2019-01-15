@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 
-import fetchGroupInfo from "./FetchGruopInfoReducer";
+import fetchGroupInfo from "./fetchGroupInfoReducer";
+import fetchUserInfo from "./fetchUserInfoReducer";
 import getGroupNamereducer from "./getGroupNameReducer";
 import groupReducer from "./groupReducer";
 import joinGroupReducer from "./joinGroupReducer";
@@ -13,7 +14,8 @@ const reducer = combineReducers({
   joinGroupInfo: joinGroupReducer,
   logInInfo,
   group: groupReducer,
-  sighUpInfo
+  sighUpInfo,
+  userInfo: fetchUserInfo
 });
 
 export default reducer;

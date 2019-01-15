@@ -6,6 +6,6 @@ export default (state = {}, action) => {
     case FETCH_GROUP_INFO:
       return { ...state, ...payload };
     default:
-      return state;
+      return { ...state };
   }
 };

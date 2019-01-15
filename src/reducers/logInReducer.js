@@ -6,11 +6,6 @@ export default (state = {}, action) => {
     case LOG_IN_INFO:
       return { ...state, ...payload };
     default:
-      return {
-        ...state,
-        username: "",
-        password: "",
-        logedIn: false
-      };
+      return { ...state, username: "", password: "", logedIn: false };
   }
 };

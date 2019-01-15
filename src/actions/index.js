@@ -1,7 +1,9 @@
 import getGroupInfo from "../apis/getGroupInfo";
+import getUserInfo from "../apis/getUserInfo";
 import regeneratorRuntime from "regenerator-runtime";
 
 export const FETCH_GROUP_INFO = "FETCH_GROUP_INFO";
+export const FETCH_USER_INFO = "FETCH_USER_INFO";
 export const GET_GROUP_NAME = "NEW_GROUP_INFO";
 export const JOIN_GROUP_INFO = "JOIN_GROUP_INFO";
 export const LOG_IN_INFO = "LOG_IN_INFO";
@@ -12,6 +14,12 @@ export const fetchGroupInfo = name => async dispatch => {
   const responce = await getGroupInfo.get(`/?name=${name}`);
 
   dispatch({ type: FETCH_GROUP_INFO, payload: responce.data[0] });
+};
+
+export const fetchUserInfo = (user, state) => async dispatch => {
+  const responce = await getUserInfo.get(`/?user=${user}`);
+  console.log(state.logInInfo, "inside action");
+  dispatch({ type: FETCH_USER_INFO, payload: responce.data[0] });
 };
 
 export const fetchGroupName = name => {
@@ -31,32 +39,3 @@ export const handleInfo = (key, value, type) => {
     }
   };
 };
-
-/*
-export const logInInfoInput = (key, value) => {
-  return {
-    type: LOG_IN_INFO,
-    payload: {
-      [key]: value
-    }
-  };
-};
-
-export const newGroupInfo = (key, value) => {
-  return {
-    type: NEW_GROUP_INFO,
-    payload: {
-      [key]: value
-    }
-  };
-};
-
-export const newUserInfo = (key, value) => {
-  return {
-    type: SIGH_UP_INFO,
-    payload: {
-      [key]: value
-    }
-  };
-};
-*/
