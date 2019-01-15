@@ -1,10 +1,10 @@
-import { SIGH_UP_INFO } from "../actions";
+import { SIGN_UP_INFO } from "../actions";
 
 export default (state = {}, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case SIGH_UP_INFO:
+    case SIGN_UP_INFO:
       return { ...state, ...payload };
     default:
       return {

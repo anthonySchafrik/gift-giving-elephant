@@ -67,6 +67,28 @@ app.post("/createUser", (req, res) => {
   });
 });
 
+app.patch("/updateUser", (req, res) => {
+  const {
+    id,
+    firstname,
+    lastname,
+    email,
+    password,
+    hobbyone,
+    hobbytwo,
+    hobbythree
+  } = req.body;
+
+  let sql = `UPDATE Users SET firstname = '${firstname}', lastname = '${lastname}', email = '${email}', password = '${password}', hobbyone = '${hobbyone}', hobbytwo = '${hobbytwo}', hobbythree = '${hobbythree}' WHERE id = ${id};`;
+
+  db.query(sql, err => {
+    if (err) {
+      res.send(err.code);
+    }
+  });
+  res.send("User Updated");
+});
+
 //join gorup
 app.post("/joinGroup", (req, res) => {
   const { groupName, password, userName } = req.body;
@@ -89,7 +111,7 @@ app.post("/joinGroup", (req, res) => {
       let groupId = group[0].id;
       let sqlJoinGroup = `INSERT INTO UsersGroup (userid, groupid) VALUES ('${userId}', '${groupId}');`;
 
-      return db.query(sqlJoinGroup, (err, result) => {
+      return db.query(sqlJoinGroup, err => {
         if (err) {
           res.send(`Error => ${err}`);
         } else {
@@ -154,7 +176,11 @@ app.patch("/updateGroup", (req, res) => {
     totalCashAmount
   )}', cash = '${Number(totalPeople)}' WHERE id = '${id}';`;
 
-  db.query(sql, (err, result) => {});
+  db.query(sql, err => {
+    if (err) {
+      res.send(`Something went wrong Error code ${err.code}`);
+    }
+  });
 
   res.send("Group updated");
 });

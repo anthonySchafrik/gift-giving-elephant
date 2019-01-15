@@ -5,7 +5,7 @@ import getGroupNamereducer from "./getGroupNameReducer";
 import groupReducer from "./groupReducer";
 import joinGroupReducer from "./joinGroupReducer";
 import logInInfo from "./logInReducer";
-import sighUpInfo from "./sighUpReducer";
+import signUpInfo from "./signUpReducer";
 
 const reducer = combineReducers({
   getGroupName: getGroupNamereducer,
@@ -13,7 +13,7 @@ const reducer = combineReducers({
   joinGroupInfo: joinGroupReducer,
   logInInfo,
   group: groupReducer,
-  sighUpInfo
+  signUpInfo
 });
 
 export default reducer;

@@ -7,7 +7,7 @@ export const GET_GROUP_NAME = "NEW_GROUP_INFO";
 export const JOIN_GROUP_INFO = "JOIN_GROUP_INFO";
 export const LOG_IN_INFO = "LOG_IN_INFO";
 export const NEW_GROUP_INFO = "NEW_GROUP_INFO";
-export const SIGH_UP_INFO = "SIGH_UP_INFO";
+export const SIGN_UP_INFO = "SIGN_UP_INFO";
 
 export const fetchGroupInfo = name => async dispatch => {
   const responce = await getGroupInfo.get(`/?name=${name}`);

@@ -2,26 +2,26 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 
-import { handleInfo, SIGH_UP_INFO } from "../actions";
+import { handleInfo, SIGN_UP_INFO } from "../actions";
 
-class Sighup extends Component {
+class Signup extends Component {
   constructor(props) {
     super(props);
-    this.handleSighUpInfo = this.handleSighUpInfo.bind(this);
-    this.handleUserSighUp = this.handleUserSighUp.bind(this);
+    this.handleSignUpInfo = this.handleSignUpInfo.bind(this);
+    this.handleUserSignUp = this.handleUserSignUp.bind(this);
   }
 
-  handleSighUpInfo(event) {
+  handleSignUpInfo(event) {
     const { id: key, value } = event.target;
 
-    this.props.handleInfo(key, value, SIGH_UP_INFO);
+    this.props.handleInfo(key, value, SIGN_UP_INFO);
   }
 
-  handleUserSighUp() {
-    const { sighUpInfo } = this.props;
+  handleUserSignUp() {
+    const { signUpInfo } = this.props;
 
     if (this.passwordCheck()) {
-      axios.post("/createUser", sighUpInfo).then(res => {
+      axios.post("/createUser", signUpInfo).then(res => {
         alert(res.data);
       });
     } else {
@@ -30,7 +30,7 @@ class Sighup extends Component {
   }
 
   passwordCheck() {
-    const { password, passwordCheck } = this.props.sighUpInfo;
+    const { password, passwordCheck } = this.props.signUpInfo;
     if (password === passwordCheck) {
       return true;
     } else {
@@ -39,13 +39,13 @@ class Sighup extends Component {
   }
 
   render() {
-    const { handleSighUpInfo, handleUserSighUp } = this;
+    const { handleSignUpInfo, handleUserSignUp } = this;
     return (
-      <div className="sigh-up-container">
+      <div className="form-container">
         <label>Username:</label>
         <input
-          onChange={handleSighUpInfo}
-          className="sigh-up-input"
+          onChange={handleSignUpInfo}
+          className="form-input"
           type="text"
           id="userName"
           maxLength="10"
@@ -53,36 +53,36 @@ class Sighup extends Component {
         />
         <label>First Name:</label>
         <input
-          onChange={handleSighUpInfo}
-          className="sigh-up-input"
+          onChange={handleSignUpInfo}
+          className="form-input"
           type="text"
           id="firstName"
         />
         <label>Last Name:</label>
         <input
-          onChange={handleSighUpInfo}
-          className="sigh-up-input"
+          onChange={handleSignUpInfo}
+          className="form-input"
           type="text"
           id="lastName"
         />
         <label>Email:</label>
         <input
-          onChange={handleSighUpInfo}
-          className="sigh-up-input"
+          onChange={handleSignUpInfo}
+          className="form-input"
           type="text"
           id="email"
         />
         <label>Password:</label>
         <input
-          onChange={handleSighUpInfo}
-          className="sigh-up-input"
+          onChange={handleSignUpInfo}
+          className="form-input"
           type="password"
           id="password"
         />
         <label>Password Check:</label>
         <input
-          onChange={handleSighUpInfo}
-          className="sigh-up-input"
+          onChange={handleSignUpInfo}
+          className="form-input"
           type="password"
           id="passwordCheck"
         />
@@ -92,36 +92,36 @@ class Sighup extends Component {
         </p>
         <label>Hobby One:</label>
         <input
-          onChange={handleSighUpInfo}
-          className="sigh-up-input"
+          onChange={handleSignUpInfo}
+          className="form-input"
           type="text"
           id="hobbyOne"
         />
         <label>Hobby two:</label>
         <input
-          onChange={handleSighUpInfo}
-          className="sigh-up-input"
+          onChange={handleSignUpInfo}
+          className="form-input"
           type="text"
           id="hobbyTwo"
         />
         <label>Hobby Three:</label>
         <input
-          onChange={handleSighUpInfo}
-          className="sigh-up-input"
+          onChange={handleSignUpInfo}
+          className="form-input"
           type="text-field"
           id="hobbyThree"
         />
-        <button onClick={handleUserSighUp}>Create User</button>
+        <button onClick={handleUserSignUp}>Create User</button>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return { sighUpInfo: state.sighUpInfo };
+  return { signUpInfo: state.signUpInfo };
 };
 
 export default connect(
   mapStateToProps,
   { handleInfo }
-)(Sighup);
+)(Signup);

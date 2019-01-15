@@ -57,9 +57,8 @@ class EditGroup extends Component {
   }
 
   handleNewGroupOption(event) {
-    let id = event.target.id;
-    let value = event.target.value;
-    this.props.handleInfo(id, value, NEW_GROUP_INFO);
+    const { id: key, value } = event.target;
+    this.props.handleInfo(key, value, NEW_GROUP_INFO);
   }
 
   toggleShowGroupInfo() {

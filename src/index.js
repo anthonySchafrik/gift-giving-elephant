@@ -11,7 +11,7 @@ import Group from "./components/Group";
 import Header from "./components/Header";
 import HomePage from "./components/HomePage";
 import reducers from "./reducers";
-import SighUp from "./components/Sighup";
+import SignUp from "./components/Signup";
 
 const store = createStore(reducers, applyMiddleware(thunk));
 
@@ -22,7 +22,7 @@ ReactDOM.render(
         <Header />
         <Switch>
           <Route path="/Account" component={AccountSetting} />
-          <Route path="/SighUp" component={SighUp} />
+          <Route path="/SignUp" component={SignUp} />
           <Route path="/Group" component={Group} />
           <Route path="/" component={HomePage} />
         </Switch>

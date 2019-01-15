@@ -101,8 +101,8 @@ class HomePage extends Component {
           <label>Password</label>
           <input onChange={handleLogIn} type="password" id="password" />
           <button onClick={LogInSubmit}>Log in</button>
-          <Link to="/SighUp">
-            <button>Sigh up</button>
+          <Link to="/SignUp">
+            <button>Sign up</button>
           </Link>
         </div>
       );
