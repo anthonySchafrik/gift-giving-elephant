@@ -1,5 +1,4 @@
 import getGroupInfo from "../apis/getGroupInfo";
-import getUserInfo from "../apis/getUserInfo";
 import regeneratorRuntime from "regenerator-runtime";
 
 export const FETCH_GROUP_INFO = "FETCH_GROUP_INFO";
@@ -14,12 +13,6 @@ export const fetchGroupInfo = name => async dispatch => {
   const responce = await getGroupInfo.get(`/?name=${name}`);
 
   dispatch({ type: FETCH_GROUP_INFO, payload: responce.data[0] });
-};
-
-export const fetchUserInfo = (user, state) => async dispatch => {
-  const responce = await getUserInfo.get(`/?user=${user}`);
-  console.log(state.logInInfo, "inside action");
-  dispatch({ type: FETCH_USER_INFO, payload: responce.data[0] });
 };
 
 export const fetchGroupName = name => {

@@ -1,43 +1,57 @@
 import React, { Component } from "react";
+import axios from "axios";
+
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { fetchUserInfo } from "../actions";
-
 class AccountSetting extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { userInfo: {} };
+  }
   componentDidMount() {
     const { logedIn, username } = this.props.logInInfo;
 
     if (logedIn) {
-      this.props.fetchUserInfo(username, this.props);
+      axios.get(`userInfo/?user=${username}`).then(res => {
+        this.setState({ userInfo: res.data[0] });
+      });
     }
   }
 
   render() {
-    console.log(this.props.logInInfo, "inside accountsetting");
-    // const {
-    //   fistname,
-    //   lastname,
-    //   email,
-    //   password,
-    //   hobbyone,
-    //   hobbytwo,
-    //   hobbythree
-    // } = this.props.userInfo;
+    const {
+      firstname,
+      lastname,
+      email,
+      password,
+      hobbyone,
+      hobbytwo,
+      hobbythree
+    } = this.state.userInfo;
 
     const { logedIn } = this.props.logInInfo;
 
     if (logedIn) {
       return (
         <div>
-          <h3>something</h3>
-          {/* <label>{fistname}</label>
-          <label>{lastname}</label>
-          <label>{email}</label>
-          <label>{password}</label>
-          <label>{hobbyone}</label>
-          <label>{hobbytwo}</label>
-          <label>{hobbythree}</label> */}
+          <h3>User setting</h3>
+          <label>Fist Name</label>
+          <input placeholder={firstname} />
+          <label>Last Name</label>
+          <input placeholder={lastname} />
+          <label>Email</label>
+          <input placeholder={email} />
+          <label>Password</label>
+          <input placeholder={password} />
+          <label>Password Check</label>
+          <input placeholder={password} />
+          <label>Hobby One</label>
+          <input placeholder={hobbyone} />
+          <label>Hobby Two</label>
+          <input placeholder={hobbytwo} />
+          <label>Hobby Three</label>
+          <input placeholder={hobbythree} />
         </div>
       );
     } else {
@@ -54,11 +68,8 @@ class AccountSetting extends Component {
 }
 
 const mapStateToProps = state => {
-  const { logInInfo, userInfo } = state;
-  return { logInInfo, userInfo };
+  const { logInInfo } = state;
+  return { logInInfo };
 };
 
-export default connect(
-  mapStateToProps,
-  { fetchUserInfo }
-)(AccountSetting);
+export default connect(mapStateToProps)(AccountSetting);
