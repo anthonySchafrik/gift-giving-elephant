@@ -1,8 +1,8 @@
-import { LOG_IN_INFO } from "../actions";
+import { LOG_IN_INFO } from '../actions';
 
 let INITIAL_STATE = {
-  username: "",
-  password: "",
+  username: '',
+  password: '',
   logedIn: false
 };
 

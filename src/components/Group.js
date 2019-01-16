@@ -1,15 +1,16 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import CreateGroup from "./CreateGroup";
-import EditGroup from "./EditGroup";
-import JoinGroup from "./JoinGroup";
+import CreateGroup from './CreateGroup';
+import EditGroup from './EditGroup';
+import GroupAdmin from './GroupAdmin';
+import JoinGroup from './JoinGroup';
 
 class Group extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      groupOptions: ""
+      groupOptions: ''
     };
 
     this.handleGroupState = this.handleGroupState.bind(this);
@@ -34,6 +35,9 @@ class Group extends Component {
         <button onClick={handleGroupState} value="joinGroup">
           Join Group
         </button>
+        <button onClick={handleGroupState} value="groupAdmin">
+          Group Admin
+        </button>
         {whichGroupToRender()}
         <div />
       </div>
@@ -43,14 +47,17 @@ class Group extends Component {
   whichGroupToRender() {
     const { groupOptions } = this.state;
 
-    if (groupOptions === "makeNewGroup") {
+    if (groupOptions === 'makeNewGroup') {
       return <CreateGroup />;
     }
-    if (groupOptions === "editGroup") {
+    if (groupOptions === 'editGroup') {
       return <EditGroup />;
     }
-    if (groupOptions === "joinGroup") {
+    if (groupOptions === 'joinGroup') {
       return <JoinGroup />;
+    }
+    if (groupOptions === 'groupAdmin') {
+      return <GroupAdmin />;
     }
   }
 }

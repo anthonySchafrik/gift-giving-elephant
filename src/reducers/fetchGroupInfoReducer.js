@@ -1,9 +1,9 @@
-import { FETCH_GROUP_INFO } from "../actions";
+import { FETCH_GROUP_INFO } from '../actions';
 
 const INITIAL_STATE = {
   id: null,
-  name: "",
-  password: "",
+  name: '',
+  password: '',
   total: null,
   cash: null
 };

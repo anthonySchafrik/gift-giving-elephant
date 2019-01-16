@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
 
-import { handleInfo, JOIN_GROUP_INFO } from "../actions";
+import { handleInfo, JOIN_GROUP_INFO } from '../actions';
 
 class JoinGroup extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class JoinGroup extends Component {
   handleJoinGroup() {
     const { joinGroupInfo } = this.props;
 
-    axios.post("/joinGroup", joinGroupInfo).then(res => {
+    axios.post('/joinGroup', joinGroupInfo).then(res => {
       alert(res.data);
     });
   }

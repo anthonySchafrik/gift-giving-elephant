@@ -1,15 +1,15 @@
-import { SIGN_UP_INFO } from "../actions";
+import { SIGN_UP_INFO } from '../actions';
 
 const INITIAL_STATE = {
-  userName: "",
-  firstName: "",
-  lastName: "",
-  email: "",
-  password: "",
-  passwordCheck: "",
-  hobbyOne: "",
-  hobbyTwo: "",
-  hobbyThree: ""
+  userName: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  passwordCheck: '',
+  hobbyOne: '',
+  hobbyTwo: '',
+  hobbyThree: ''
 };
 
 export default (state = INITIAL_STATE, action) => {

@@ -1,15 +1,15 @@
-import getGroupInfo from "../apis/getGroupInfo";
-import getUserInfo from "../apis/getUserInfo";
-import regeneratorRuntime from "regenerator-runtime";
+import getGroupInfo from '../apis/getGroupInfo';
+import getUserInfo from '../apis/getUserInfo';
+import regeneratorRuntime from 'regenerator-runtime';
 
-export const FETCH_GROUP_INFO = "FETCH_GROUP_INFO";
-export const FETCH_USER_INFO = "FETCH_USER_INFO";
-export const GET_GROUP_NAME = "NEW_GROUP_INFO";
-export const JOIN_GROUP_INFO = "JOIN_GROUP_INFO";
-export const LOG_IN_INFO = "LOG_IN_INFO";
-export const NEW_GROUP_INFO = "NEW_GROUP_INFO";
-export const SIGN_UP_INFO = "SIGN_UP_INFO";
-export const UPDATE_USER_INFO = "UPDATE_USER_INFO";
+export const FETCH_GROUP_INFO = 'FETCH_GROUP_INFO';
+export const FETCH_USER_INFO = 'FETCH_USER_INFO';
+export const GET_GROUP_NAME = 'NEW_GROUP_INFO';
+export const JOIN_GROUP_INFO = 'JOIN_GROUP_INFO';
+export const LOG_IN_INFO = 'LOG_IN_INFO';
+export const NEW_GROUP_INFO = 'NEW_GROUP_INFO';
+export const SIGN_UP_INFO = 'SIGN_UP_INFO';
+export const UPDATE_USER_INFO = 'UPDATE_USER_INFO';
 
 export const fetchGroupInfo = name => async dispatch => {
   const responce = await getGroupInfo.get(`/?name=${name}`);

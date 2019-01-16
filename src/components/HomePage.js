@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import { handleInfo, LOG_IN_INFO } from "../actions";
+import { handleInfo, LOG_IN_INFO } from '../actions';
 
 class HomePage extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class HomePage extends Component {
       })
       .then(res => {
         if (res.data === true) {
-          this.handleSuccessfullLogIn("logedIn", true);
+          this.handleSuccessfullLogIn('logedIn', true);
         } else {
           alert(res.data);
         }
@@ -51,10 +51,14 @@ class HomePage extends Component {
           <p>
             If you would like to make a new group, click New Group from the drop
             down. If you are looking for your group or group info, click on My
-            Group.
+            Group. Assinged person will show you who you were assinged to and
+            there gift ideas.
           </p>
           <Link to="/Group">
             <button>Group</button>
+          </Link>
+          <Link to="/Assigned">
+            <button>Assigned Person</button>
           </Link>
           <div>
             <h3>What is the Gift Giving Elephant?</h3>
@@ -111,7 +115,8 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = state => {
-  return { logInInfo: state.logInInfo };
+  const { logInInfo } = state;
+  return { logInInfo };
 };
 
 export default connect(

@@ -1,8 +1,8 @@
-import { JOIN_GROUP_INFO } from "../actions";
+import { JOIN_GROUP_INFO } from '../actions';
 
 const INITIAL_STATE = {
-  groupName: "",
-  password: ""
+  groupName: '',
+  password: ''
 };
 
 export default (state = INITIAL_STATE, action) => {

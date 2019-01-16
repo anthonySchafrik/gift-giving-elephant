@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import { fetchUserInfo, handleInfo, UPDATE_USER_INFO } from "../actions";
+import { fetchUserInfo, handleInfo, UPDATE_USER_INFO } from '../actions';
 
 class AccountSetting extends Component {
   constructor(props) {
@@ -41,11 +41,11 @@ class AccountSetting extends Component {
     let passCheck = userInfo.passCheck || password;
 
     if (passwordCheck(password, passCheck)) {
-      axios.patch("/updateUser", userInfo).then(res => {
+      axios.patch('/updateUser', userInfo).then(res => {
         alert(res.data);
       });
     } else {
-      alert("Passwords did not match");
+      alert('Passwords did not match');
     }
   }
 

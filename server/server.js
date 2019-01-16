@@ -1,12 +1,12 @@
-const bodyParser = require("body-parser");
-const express = require("express");
-const path = require("path");
+const bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
 
 const app = express();
 
 const log = console.log;
 
-const { db } = require("../database/index");
+const { db } = require('../database/index');
 
 //can not get the utils to return message to pass on to client after group was created or error
 // const  { insert } = require('./utils');
@@ -15,30 +15,30 @@ const port = 2020;
 
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true}));
-app.use(express.static(path.join(__dirname, "../dist")));
+app.use(express.static(path.join(__dirname, '../dist')));
 
 // new group req
-app.post("/newGroup", (req, res) => {
+app.post('/newGroup', (req, res) => {
   const { groupName, groupPass, totalCashAmount, totalPeople } = req.body;
 
   let sql = `INSERT INTO Groups (name, password, total, cash) VALUES('${groupName}', '${groupPass}', '${totalCashAmount}', '${totalPeople}');`;
   db.query(sql, (err, result) => {
     if (err) {
       log(`ERROR L28s => ${err}`);
-      if (err.code === "23505") {
-        res.send("Group name all ready Taken");
+      if (err.code === '23505') {
+        res.send('Group name all ready Taken');
       } else {
         res.send(`Something went wrong text error code to Anthony ${err.code}`);
       }
     } else {
-      log("inserted Group sotred", result);
-      res.send("Group created");
+      log('inserted Group sotred', result);
+      res.send('Group created');
     }
   });
 });
 
 // New new user req
-app.post("/createUser", (req, res) => {
+app.post('/createUser', (req, res) => {
   const {
     email,
     firstName,
@@ -55,19 +55,19 @@ app.post("/createUser", (req, res) => {
   db.query(sql, (err, result) => {
     if (err) {
       log(`ERROR L56s => ${err}`);
-      if (err.code === "23505") {
-        res.send("User name all ready Taken");
+      if (err.code === '23505') {
+        res.send('User name all ready Taken');
       } else {
         res.send(`Something went wrong text error code to Anthony ${err.code}`);
       }
     } else {
-      log("inserted Group sotred", result);
-      res.send("User created");
+      log('inserted Group sotred', result);
+      res.send('User created');
     }
   });
 });
 
-app.patch("/updateUser", (req, res) => {
+app.patch('/updateUser', (req, res) => {
   const {
     id,
     firstname,
@@ -86,11 +86,11 @@ app.patch("/updateUser", (req, res) => {
       res.send(err.code);
     }
   });
-  res.send("User Updated");
+  res.send('User Updated');
 });
 
 //join gorup
-app.post("/joinGroup", (req, res) => {
+app.post('/joinGroup', (req, res) => {
   const { groupName, password, userName } = req.body;
 
   let group, user;
@@ -122,7 +122,7 @@ app.post("/joinGroup", (req, res) => {
 });
 
 // query to get a group info
-app.get("/getGroupInfo", (req, res) => {
+app.get('/getGroupInfo', (req, res) => {
   let name = req.query.name;
   let sql = `SELECT * FROM Groups WHERE name = '${name}';`;
 
@@ -132,7 +132,7 @@ app.get("/getGroupInfo", (req, res) => {
 });
 
 // query to log in site
-app.get("/logUserIn", (req, res) => {
+app.get('/logUserIn', (req, res) => {
   const { username, password } = req.query;
 
   let sql = `SELECT * FROM Users WHERE username = '${username}';`;
@@ -145,16 +145,16 @@ app.get("/logUserIn", (req, res) => {
       if (result.rows[0].password === password) {
         res.send(true);
       } else {
-        res.send("Password did not match");
+        res.send('Password did not match');
       }
     } else {
-      res.send("User not found");
+      res.send('User not found');
     }
   });
 });
 
 //query to get user info
-app.get("/userInfo", (req, res) => {
+app.get('/userInfo', (req, res) => {
   let user = req.query.user;
 
   sql = `SELECT * FROM Users WHERE username = '${user}';`;
@@ -169,7 +169,7 @@ app.get("/userInfo", (req, res) => {
 });
 
 //query to update group
-app.patch("/updateGroup", (req, res) => {
+app.patch('/updateGroup', (req, res) => {
   const { id, groupName, groupPass, totalCashAmount, totalPeople } = req.body;
 
   let sql = `UPDATE Groups SET name = '${groupName}', password = '${groupPass}', total = '${Number(
@@ -182,7 +182,7 @@ app.patch("/updateGroup", (req, res) => {
     }
   });
 
-  res.send("Group updated");
+  res.send('Group updated');
 });
 
 // server start

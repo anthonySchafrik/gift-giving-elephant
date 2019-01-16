@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
 
-import { handleInfo, NEW_GROUP_INFO } from "../actions";
+import { handleInfo, NEW_GROUP_INFO } from '../actions';
 
 class CreateGroup extends Component {
   constructor(props) {
@@ -15,11 +15,11 @@ class CreateGroup extends Component {
     const { newGroup } = this.props;
 
     if (this.passwordCheck()) {
-      axios.post("/newGroup", newGroup).then(res => {
+      axios.post('/newGroup', newGroup).then(res => {
         alert(res.data);
       });
     } else {
-      alert("Password did not match");
+      alert('Password did not match');
     }
   }
 

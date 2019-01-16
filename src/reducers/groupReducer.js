@@ -1,9 +1,9 @@
-import { NEW_GROUP_INFO } from "../actions/index";
+import { NEW_GROUP_INFO } from '../actions/index';
 
 const INITIAL_STATE = {
-  groupName: "",
-  groupPass: "",
-  groupPassCheck: "",
+  groupName: '',
+  groupPass: '',
+  groupPassCheck: '',
   totalPeople: null,
   totalCashAmount: null
 };

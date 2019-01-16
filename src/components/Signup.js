@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
 
-import { handleInfo, SIGN_UP_INFO } from "../actions";
+import { handleInfo, SIGN_UP_INFO } from '../actions';
 
 class Signup extends Component {
   constructor(props) {
@@ -21,11 +21,11 @@ class Signup extends Component {
     const { signUpInfo } = this.props;
 
     if (this.passwordCheck()) {
-      axios.post("/createUser", signUpInfo).then(res => {
+      axios.post('/createUser', signUpInfo).then(res => {
         alert(res.data);
       });
     } else {
-      alert("Passwords did not match");
+      alert('Passwords did not match');
     }
   }
 
@@ -86,7 +86,7 @@ class Signup extends Component {
           type="password"
           id="passwordCheck"
         />
-        <p style={{ maxWidth: "40%" }}>
+        <p style={{ maxWidth: '40%' }}>
           Put in a three ideas to help people know what to get you for exmple
           Doctor Who, World of Warcraft, football team.
         </p>

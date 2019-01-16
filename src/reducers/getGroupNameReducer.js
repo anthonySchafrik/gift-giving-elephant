@@ -1,7 +1,7 @@
-import { GET_GROUP_NAME } from "../actions";
+import { GET_GROUP_NAME } from '../actions';
 
 const INITIAL_STATE = {
-  name: ""
+  name: ''
 };
 
 export default (state = INITIAL_STATE, action) => {

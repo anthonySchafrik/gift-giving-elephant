@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import { handleInfo, LOG_IN_INFO } from "../actions";
+import { handleInfo, LOG_IN_INFO } from '../actions';
 
 const Header = props => {
   return (
@@ -15,7 +15,7 @@ const Header = props => {
       </Link>
       <button
         onClick={() => {
-          props.handleInfo("logedIn", false, LOG_IN_INFO);
+          props.handleInfo('logedIn', false, LOG_IN_INFO);
         }}
       >
         Log Out

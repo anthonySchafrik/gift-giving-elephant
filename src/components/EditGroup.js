@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import axios from "axios";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
 import {
   fetchGroupName,
   fetchGroupInfo,
   handleInfo,
   NEW_GROUP_INFO
-} from "../actions";
+} from '../actions';
 
 class EditGroup extends Component {
   constructor(props) {
@@ -51,7 +51,7 @@ class EditGroup extends Component {
       totalPeople: total || totalPeople
     };
 
-    axios.patch("/updateGroup", updateGroup).then(res => {
+    axios.patch('/updateGroup', updateGroup).then(res => {
       alert(res.data);
     });
   }
