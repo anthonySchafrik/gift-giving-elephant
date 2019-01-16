@@ -3,10 +3,11 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+import { fetchUserInfo, handleInfo, UPDATE_USER_INFO } from "../actions";
+
 class AccountSetting extends Component {
   constructor(props) {
     super(props);
-    this.state = { userInfo: {}, updateUser: {} };
 
     this.handleUserUpdate = this.handleUserUpdate.bind(this);
     this.submitUpedatedUser = this.submitUpedatedUser.bind(this);
@@ -15,22 +16,13 @@ class AccountSetting extends Component {
     const { logedIn, username } = this.props.logInInfo;
 
     if (logedIn) {
-      axios.get(`userInfo/?user=${username}`).then(res => {
-        this.setState({ userInfo: res.data[0] });
-      });
+      this.props.fetchUserInfo(username);
     }
   }
 
   handleUserUpdate(event) {
     const { id: key, value } = event.target;
-    const { updateUser } = this.state;
-
-    this.setState({
-      updateUser: {
-        ...updateUser,
-        [key]: value
-      }
-    });
+    this.props.handleInfo(key, value, UPDATE_USER_INFO);
   }
 
   passwordCheck(pass, passCheck) {
@@ -43,35 +35,13 @@ class AccountSetting extends Component {
 
   submitUpedatedUser() {
     const { passwordCheck } = this;
-    const { updateUser } = this.state;
-    const {
-      id,
-      firstname,
-      lastname,
-      email,
-      password,
-      hobbyone,
-      hobbytwo,
-      hobbythree
-    } = this.state.userInfo;
+    const { userInfo } = this.props;
+    const { password } = userInfo;
 
-    let newPassword = updateUser.password || password;
-    let passCheck = updateUser.passCheck || password;
+    let passCheck = userInfo.passCheck || password;
 
-    let updatedUser = {
-      id,
-      password: updateUser.password || password,
-      firstname: updateUser.firstname || firstname,
-      lastname: updateUser.lastname || lastname,
-      email: updateUser.email || email,
-      password: updateUser.password || password,
-      hobbyone: updateUser.hobbyone || hobbyone,
-      hobbytwo: updateUser.hobbytwo || hobbytwo,
-      hobbythree: updateUser.hobbythree || hobbythree
-    };
-
-    if (passwordCheck(newPassword, passCheck)) {
-      axios.patch("/updateUser", updatedUser).then(res => {
+    if (passwordCheck(password, passCheck)) {
+      axios.patch("/updateUser", userInfo).then(res => {
         alert(res.data);
       });
     } else {
@@ -89,7 +59,7 @@ class AccountSetting extends Component {
       hobbyone,
       hobbytwo,
       hobbythree
-    } = this.state.userInfo;
+    } = this.props.userInfo;
     const { logedIn } = this.props.logInInfo;
 
     if (logedIn) {
@@ -153,8 +123,11 @@ class AccountSetting extends Component {
 }
 
 const mapStateToProps = state => {
-  const { logInInfo } = state;
-  return { logInInfo };
+  const { logInInfo, userInfo } = state;
+  return { logInInfo, userInfo };
 };
 
-export default connect(mapStateToProps)(AccountSetting);
+export default connect(
+  mapStateToProps,
+  { fetchUserInfo, handleInfo }
+)(AccountSetting);

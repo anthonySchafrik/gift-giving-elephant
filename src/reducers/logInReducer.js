@@ -1,11 +1,17 @@
 import { LOG_IN_INFO } from "../actions";
 
-export default (state = {}, action) => {
+let INITIAL_STATE = {
+  username: "",
+  password: "",
+  logedIn: false
+};
+
+export default (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
   switch (type) {
     case LOG_IN_INFO:
       return { ...state, ...payload };
     default:
-      return { ...state, username: "", password: "", logedIn: false };
+      return state;
   }
 };
