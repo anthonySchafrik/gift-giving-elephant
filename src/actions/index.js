@@ -4,7 +4,7 @@ import regeneratorRuntime from 'regenerator-runtime';
 
 export const FETCH_GROUP_INFO = 'FETCH_GROUP_INFO';
 export const FETCH_USER_INFO = 'FETCH_USER_INFO';
-export const GET_GROUP_NAME = 'NEW_GROUP_INFO';
+export const GET_GROUP_NAME = 'GET_GROUP_NAME';
 export const JOIN_GROUP_INFO = 'JOIN_GROUP_INFO';
 export const LOG_IN_INFO = 'LOG_IN_INFO';
 export const NEW_GROUP_INFO = 'NEW_GROUP_INFO';

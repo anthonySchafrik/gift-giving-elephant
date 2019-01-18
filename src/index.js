@@ -7,7 +7,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 import AccountSetting from './components/AccountSetting';
-import AssignedPerson from './components/AssingedPerson';
+import AssignedPerson from './components/AssignedPerson';
 import Group from './components/Group';
 import Header from './components/Header';
 import HomePage from './components/HomePage';

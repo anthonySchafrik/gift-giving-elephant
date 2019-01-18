@@ -69,6 +69,8 @@ class EditGroup extends Component {
   render() {
     const { name, password, total, cash } = this.props.groupInfo;
     const {
+      handleGroupName,
+      handleFetchGroupinfo,
       handleNewGroupOption,
       handleGroupUpdate,
       toggleShowGroupInfo
@@ -77,13 +79,15 @@ class EditGroup extends Component {
     if (!showGroupInfo) {
       return (
         <div>
-          <input onChange={this.handleGroupName} type="text" id="name" />
-          <button onClick={this.handleFetchGroupinfo}>click</button>
+          <h3>Enter name of Group you wish to edit.</h3>
+          <input onChange={handleGroupName} type="text" id="name" />
+          <button onClick={handleFetchGroupinfo}>click</button>
         </div>
       );
     } else {
       return (
         <div>
+          <br />
           <label>Group Name</label>
           <input
             id="groupName"

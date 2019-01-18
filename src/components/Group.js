@@ -29,9 +29,6 @@ class Group extends Component {
         <button onClick={handleGroupState} value="makeNewGroup">
           Make New Group
         </button>
-        <button onClick={handleGroupState} value="editGroup">
-          Edit Group
-        </button>
         <button onClick={handleGroupState} value="joinGroup">
           Join Group
         </button>
@@ -49,9 +46,6 @@ class Group extends Component {
 
     if (groupOptions === 'makeNewGroup') {
       return <CreateGroup />;
-    }
-    if (groupOptions === 'editGroup') {
-      return <EditGroup />;
     }
     if (groupOptions === 'joinGroup') {
       return <JoinGroup />;
