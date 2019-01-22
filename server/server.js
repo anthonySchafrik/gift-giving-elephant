@@ -4,10 +4,10 @@ const path = require('path');
 
 const app = express();
 
-const log = console.log;
-
 const { db } = require('../database/index');
-
+const utils = require('./utils');
+const log = console.log;
+log(utils);
 //can not get the utils to return message to pass on to client after group was created or error
 // const  { insert } = require('./utils');
 
@@ -119,6 +119,12 @@ app.post('/joinGroup', (req, res) => {
         }
       });
     });
+});
+
+app.post('/matchedUsers', (req, res) => {
+  let group = req.body;
+
+  res.send(utils.assignPeople(group));
 });
 
 // query to get a group info

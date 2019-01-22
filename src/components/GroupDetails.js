@@ -21,52 +21,22 @@ class GroupDetails extends Component {
     this.userInfo = this.userInfo.bind(this);
   }
 
-  /* 
-    pull 2 random user out of the group array
-    check to make sure they did not pick the same number
-    pull the 2 users out of the group array
-    repeate till array is empty
-  */
+  assignPeople() {
+    const { groupDetails: group } = this.state;
 
-  assignPeople(event, group, match = []) {
-    group = group || this.state.groupDetails;
-
-    let one = generateRandomNumber(group.length);
-    let two = generateRandomNumber(group.length);
-
-    while (one === two) {
-      two = generateRandomNumber(group.length);
-    }
-
-    let personOne = { ...group[one] };
-    let personTwo = { ...group[two] };
-
-    match.push([personOne, personTwo]);
-
-    group = groupFilter(group, personOne, personTwo);
-
-    if (group.length > 0) {
-      return this.assignPeople(event, group, match);
-    }
-    console.log(match);
+    axios.post('/matchedUsers', group).then(res => {
+      console.log(res);
+    });
   }
 
   fetchUserGroupInfo() {
-    // const { name: group } = this.props.getGroupName;
+    const { name: group } = this.props.getGroupName;
 
     this.setState({ isLoading: true });
-    let group = [
-      { id: 1, firstname: 'a' },
-      { id: 2, firstname: 'b' },
-      { id: 3, firstname: 'c' },
-      { id: 4, firstname: 'd' },
-      { id: 5, firstname: 'e' },
-      { id: 6, firstname: 'f' }
-    ];
-    // axios.get(`/userGroupInfo/?group=${group}`).then(res => {
-    // this.setState({ groupDetails: res.data });
-    this.setState({ groupDetails: group });
-    // });
+
+    axios.get(`/userGroupInfo/?group=${group}`).then(res => {
+      this.setState({ groupDetails: res.data });
+    });
   }
 
   handleGroupName(event) {
