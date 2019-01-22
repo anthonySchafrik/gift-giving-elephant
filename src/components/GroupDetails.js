@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
 
-import { fetchGroupName } from "../actions";
+import { fetchGroupName } from '../actions';
+import { generateRandomNumber, groupFilter } from '../utils';
 
 class GroupDetails extends Component {
   constructor(props) {
@@ -13,10 +14,59 @@ class GroupDetails extends Component {
       isLoading: false
     };
 
-    this.handleGroupName = this.handleGroupName.bind(this);
+    this.assignPeople = this.assignPeople.bind(this);
     this.fetchUserGroupInfo = this.fetchUserGroupInfo.bind(this);
+    this.handleGroupName = this.handleGroupName.bind(this);
     this.loading = this.loading.bind(this);
     this.userInfo = this.userInfo.bind(this);
+  }
+
+  /* 
+    pull 2 random user out of the group array
+    check to make sure they did not pick the same number
+    pull the 2 users out of the group array
+    repeate till array is empty
+  */
+
+  assignPeople(event, group, match = []) {
+    group = group || this.state.groupDetails;
+
+    let one = generateRandomNumber(group.length);
+    let two = generateRandomNumber(group.length);
+
+    while (one === two) {
+      two = generateRandomNumber(group.length);
+    }
+
+    let personOne = { ...group[one] };
+    let personTwo = { ...group[two] };
+
+    match.push([personOne, personTwo]);
+
+    group = groupFilter(group, personOne, personTwo);
+
+    if (group.length > 0) {
+      return this.assignPeople(event, group, match);
+    }
+    console.log(match);
+  }
+
+  fetchUserGroupInfo() {
+    // const { name: group } = this.props.getGroupName;
+
+    this.setState({ isLoading: true });
+    let group = [
+      { id: 1, firstname: 'a' },
+      { id: 2, firstname: 'b' },
+      { id: 3, firstname: 'c' },
+      { id: 4, firstname: 'd' },
+      { id: 5, firstname: 'e' },
+      { id: 6, firstname: 'f' }
+    ];
+    // axios.get(`/userGroupInfo/?group=${group}`).then(res => {
+    // this.setState({ groupDetails: res.data });
+    this.setState({ groupDetails: group });
+    // });
   }
 
   handleGroupName(event) {
@@ -25,36 +75,24 @@ class GroupDetails extends Component {
     this.props.fetchGroupName(name);
   }
 
-  fetchUserGroupInfo() {
-    const { name: group } = this.props.getGroupName;
-
-    this.setState({ isLoading: true });
-
-    axios.get(`/userGroupInfo/?group=${group}`).then(res => {
-      this.setState({ groupDetails: res.data });
-    });
-  }
-
   loading() {
     const { isLoading } = this.state;
 
     if (isLoading) {
-      return <h4>Loading...</h4>;
+      return <h4>Getting Details a few moments Loading...</h4>;
     }
   }
 
-  userInfo() {
-    const { groupDetails } = this.state;
-
-    return groupDetails.map(user => {
-      return <p>{user.firstname}</p>;
-    });
-  }
-
   render() {
-    const { handleGroupName, fetchUserGroupInfo, loading, userInfo } = this;
+    const {
+      assignPeople,
+      fetchUserGroupInfo,
+      handleGroupName,
+      loading,
+      userInfo
+    } = this;
     const { groupDetails } = this.state;
-    console.log(groupDetails);
+
     if (!groupDetails.length) {
       return (
         <div>
@@ -72,8 +110,21 @@ class GroupDetails extends Component {
         </div>
       );
     } else {
-      return <div>{userInfo()}</div>;
+      return (
+        <div>
+          {userInfo()}
+          <button onClick={assignPeople}>Assign People</button>
+        </div>
+      );
     }
+  }
+
+  userInfo() {
+    const { groupDetails } = this.state;
+
+    return groupDetails.map(user => {
+      return <p key={user.id}>{user.firstname}</p>;
+    });
   }
 }
 
