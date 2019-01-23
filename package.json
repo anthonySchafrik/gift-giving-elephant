@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev-build": "webpack -d --watch",
+    "dev-server": "nodemon --inspect server/server.js",
+    "build": "webpack -d",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack -d --watch",
-    "start": "nodemon --inspect server/server.js"
+    "start": "webpack -d && node server/server.js"
   },
   "keywords": [],
   "author": "",
@@ -35,9 +37,6 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.2",
     "redux": "^4.0.1",
-    "redux-actions": "^2.6.4",
-    "redux-form": "^8.1.0",
-    "redux-promise": "^0.6.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0"
