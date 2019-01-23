@@ -65,4 +65,24 @@ client.query(sqlUsersGroup, err => {
   }
 });
 
+const sqlMatchedUsers =
+  'CREATE TABLE  MatchedUsers (id SERIAL primary key, matchOneID INT references Users(id), matchTwoId INT references Users(id));';
+
+client.query(sqlMatchedUsers, err => {
+  if (err) {
+    if (err.code === '42P07') {
+      console.log('MatchedUsers Table all ready there');
+    } else {
+      console.log(`Error in database => ${err}`);
+      console.log(err.code);
+    }
+  } else {
+    console.log('MatchedUsers Table created');
+  }
+});
+
+/**
+ *
+ */
+
 module.exports.db = client;

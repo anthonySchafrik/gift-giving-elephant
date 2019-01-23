@@ -2,15 +2,11 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const path = require('path');
 
-const app = express();
-
 const { db } = require('../database/index');
 const utils = require('./utils');
-const log = console.log;
-log(utils);
-//can not get the utils to return message to pass on to client after group was created or error
-// const  { insert } = require('./utils');
 
+const app = express();
+const log = console.log;
 const port = 2020;
 
 app.use(bodyParser.json());
@@ -123,8 +119,37 @@ app.post('/joinGroup', (req, res) => {
 
 app.post('/matchedUsers', (req, res) => {
   let group = req.body;
+  let error = false;
 
-  res.send(utils.assignPeople(group));
+  utils.assignPeople(group).forEach(match => {
+    let sql = `
+      INSERT INTO MatchedUsers (
+        matchOneID, 
+        matchTwoId
+      ) 
+      VALUES
+        (
+          '${match[0].id}', 
+          '${match[1].id}'
+        ),
+        (
+          '${match[1].id}', 
+          '${match[0].id}'
+        )`;
+
+    db.query(sql, (err, result) => {
+      if (err) {
+        error = true;
+        log(err);
+      }
+    });
+  });
+
+  if (error) {
+    res.send(`Something went wrong try again later`);
+  }
+
+  res.send('Matches Set');
 });
 
 // query to get a group info
