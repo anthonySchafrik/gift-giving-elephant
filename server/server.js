@@ -225,6 +225,21 @@ app.get('/userGroupInfo', (req, res) => {
   }, 3000);
 });
 
+app.get('/getMatch', (req, res) => {
+  let userId = req.query.userId;
+
+  let sqlMatch = `SELECT matchtwoid FROM MatchedUsers WHERE (id = '${userId}')`;
+
+  db.query(sqlMatch, (err, result) => {
+    let matchedUserId = result.rows[0].matchtwoid;
+    let sqlMatchUser = `SELECT firstname, hobbyone, hobbytwo, hobbythree from Users WHERE(id = '${matchedUserId}'); `;
+
+    return db.query(sqlMatchUser, (err, result) => {
+      res.send(result.rows[0]);
+    });
+  });
+});
+
 //query to update group
 app.patch('/updateGroup', (req, res) => {
   const { id, groupName, groupPass, totalCashAmount, totalPeople } = req.body;
