@@ -13,13 +13,15 @@ const Header = props => {
       <Link to="/Account">
         <button>Account Setting</button>
       </Link>
-      <button
-        onClick={() => {
-          props.handleInfo('logedIn', false, LOG_IN_INFO);
-        }}
-      >
-        Log Out
-      </button>
+      <Link to="/">
+        <button
+          onClick={() => {
+            props.handleInfo('logedIn', false, LOG_IN_INFO);
+          }}
+        >
+          Log Out
+        </button>
+      </Link>
     </div>
   );
 };

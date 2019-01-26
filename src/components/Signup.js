@@ -58,7 +58,7 @@ class Signup extends Component {
           type="text"
           id="firstName"
         />
-        <label>Last Name:</label>
+        {/* <label>Last Name:</label>
         <input
           onChange={handleSignUpInfo}
           className="form-input"
@@ -71,7 +71,7 @@ class Signup extends Component {
           className="form-input"
           type="text"
           id="email"
-        />
+        /> */}
         <label>Password:</label>
         <input
           onChange={handleSignUpInfo}
