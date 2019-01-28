@@ -5,6 +5,7 @@ const path = require('path');
 const { db } = require('../database/index');
 const utils = require('./utils');
 const groupRoutes = require('./routes/group.js');
+const usersRoutes = require('./routes/user.js');
 const app = express();
 const log = console.log;
 const port = 2020;
@@ -14,97 +15,97 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../dist')));
 
 app.use('/', groupRoutes);
+app.use('/', usersRoutes);
+// //users
+// //create user
+// app.post('/createUser', (req, res) => {
+//   const {
+//     email,
+//     firstName,
+//     hobbyOne,
+//     hobbyThree,
+//     hobbyTwo,
+//     lastName,
+//     password,
+//     userName
+//   } = req.body;
 
-//users
-//create user
-app.post('/createUser', (req, res) => {
-  const {
-    email,
-    firstName,
-    hobbyOne,
-    hobbyThree,
-    hobbyTwo,
-    lastName,
-    password,
-    userName
-  } = req.body;
+//   let sql = `INSERT INTO Users (username, firstname, lastname, email,  password, hobbyone, hobbytwo, hobbythree) VALUES('${userName}', '${firstName}', '${lastName}', '${email}', '${password}', '${hobbyOne}', '${hobbyTwo}', '${hobbyThree}');`;
 
-  let sql = `INSERT INTO Users (username, firstname, lastname, email,  password, hobbyone, hobbytwo, hobbythree) VALUES('${userName}', '${firstName}', '${lastName}', '${email}', '${password}', '${hobbyOne}', '${hobbyTwo}', '${hobbyThree}');`;
+//   db.query(sql, (err, result) => {
+//     if (err) {
+//       log(`ERROR L56s => ${err}`);
+//       if (err.code === '23505') {
+//         res.send('User name all ready Taken');
+//       } else {
+//         res.send(`Something went wrong text error code to Anthony ${err.code}`);
+//       }
+//     } else {
+//       log('inserted Group sotred', result);
+//       res.send('User created');
+//     }
+//   });
+// });
 
-  db.query(sql, (err, result) => {
-    if (err) {
-      log(`ERROR L56s => ${err}`);
-      if (err.code === '23505') {
-        res.send('User name all ready Taken');
-      } else {
-        res.send(`Something went wrong text error code to Anthony ${err.code}`);
-      }
-    } else {
-      log('inserted Group sotred', result);
-      res.send('User created');
-    }
-  });
-});
+// //update user
+// app.patch('/updateUser', (req, res) => {
+//   const {
+//     id,
+//     firstname,
+//     lastname,
+//     email,
+//     password,
+//     hobbyone,
+//     hobbytwo,
+//     hobbythree
+//   } = req.body;
 
-//update user
-app.patch('/updateUser', (req, res) => {
-  const {
-    id,
-    firstname,
-    lastname,
-    email,
-    password,
-    hobbyone,
-    hobbytwo,
-    hobbythree
-  } = req.body;
+//   let sql = `UPDATE Users SET firstname = '${firstname}', lastname = '${lastname}', email = '${email}', password = '${password}', hobbyone = '${hobbyone}', hobbytwo = '${hobbytwo}', hobbythree = '${hobbythree}' WHERE id = ${id};`;
 
-  let sql = `UPDATE Users SET firstname = '${firstname}', lastname = '${lastname}', email = '${email}', password = '${password}', hobbyone = '${hobbyone}', hobbytwo = '${hobbytwo}', hobbythree = '${hobbythree}' WHERE id = ${id};`;
+//   db.query(sql, err => {
+//     if (err) {
+//       res.send(err.code);
+//     }
+//   });
+//   res.send('User Updated');
+// });
 
-  db.query(sql, err => {
-    if (err) {
-      res.send(err.code);
-    }
-  });
-  res.send('User Updated');
-});
+// // query to log in site
+// app.get('/logUserIn', (req, res) => {
+//   const { username, password } = req.query;
 
-// query to log in site
-app.get('/logUserIn', (req, res) => {
-  const { username, password } = req.query;
+//   let sql = `SELECT * FROM Users WHERE username = '${username}';`;
 
-  let sql = `SELECT * FROM Users WHERE username = '${username}';`;
+//   db.query(sql, (err, result) => {
+//     if (err) {
+//       res.send(`Something went wrong error code: ${err.code}`);
+//     }
+//     if (result.rows.length) {
+//       if (result.rows[0].password === password) {
+//         res.send(true);
+//       } else {
+//         res.send('Password did not match');
+//       }
+//     } else {
+//       res.send('User not found');
+//     }
+//   });
+// });
 
-  db.query(sql, (err, result) => {
-    if (err) {
-      res.send(`Something went wrong error code: ${err.code}`);
-    }
-    if (result.rows.length) {
-      if (result.rows[0].password === password) {
-        res.send(true);
-      } else {
-        res.send('Password did not match');
-      }
-    } else {
-      res.send('User not found');
-    }
-  });
-});
+// //query to get user info
+// app.get('/userInfo', (req, res) => {
+//   let user = req.query.user;
 
-//query to get user info
-app.get('/userInfo', (req, res) => {
-  let user = req.query.user;
+//   sql = `SELECT * FROM Users WHERE username = '${user}';`;
 
-  sql = `SELECT * FROM Users WHERE username = '${user}';`;
-
-  db.query(sql, (err, result) => {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(result.rows);
-    }
-  });
-});
+//   db.query(sql, (err, result) => {
+//     if (err) {
+//       res.send(err);
+//     } else {
+//       res.send(result.rows);
+//     }
+//   });
+// });
 
 //user group info
 app.get('/userGroupInfo', (req, res) => {
