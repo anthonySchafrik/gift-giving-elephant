@@ -25,9 +25,19 @@ class AssignedPerson extends Component {
 
   render() {
     const { username } = this.props.logInInfo;
-    const { firstname, hobbyone, hobbytwo, hobbythree } = this.state.match;
+    const {
+      firstname,
+      hobbyone,
+      hobbytwo,
+      hobbythree,
+      match
+    } = this.state.match;
+
     if (username === '') {
       return <h3>Log In to get your match</h3>;
+    }
+    if (match) {
+      return <h3>User is not matched yet.</h3>;
     }
     if (firstname) {
       return (

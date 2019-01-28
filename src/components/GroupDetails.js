@@ -25,7 +25,7 @@ class GroupDetails extends Component {
     const { groupDetails: group } = this.state;
 
     axios.post('/matchedUsers', group).then(res => {
-      console.log(res);
+      alert(res.data);
     });
   }
 
