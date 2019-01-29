@@ -40,7 +40,7 @@ class CreateGroup extends Component {
   render() {
     const { handleNewGroupOption, handleCreateNewGroup } = this;
     return (
-      <div>
+      <div className="form-container">
         <label>Group Name:</label>
         <input onChange={handleNewGroupOption} id="groupName" type="text" />
         <br />

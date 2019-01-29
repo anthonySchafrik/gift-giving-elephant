@@ -47,7 +47,7 @@ class HomePage extends Component {
 
     if (logedIn) {
       return (
-        <div>
+        <div className="form-container">
           <p>
             If you would like to make a new group, click New Group from the drop
             down. If you are looking for your group or group info, click on My
@@ -99,7 +99,7 @@ class HomePage extends Component {
       );
     } else {
       return (
-        <div>
+        <div className="form-container">
           <label>Username</label>
           <input onChange={handleLogIn} type="text" id="username" />
           <label>Password</label>

@@ -22,7 +22,7 @@ class GroupAdmin extends Component {
   render() {
     const { whichInfoToRender, handleInfoState } = this;
     return (
-      <div>
+      <div className="form-container">
         <p>
           If you like to edit group info use the botton. If you like to see who
           all is signed up click Group details.

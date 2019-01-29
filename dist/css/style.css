@@ -2,6 +2,10 @@ body {
   background-color: lightgray;
 }
 
+div {
+  display: inline;
+}
+
 .form-container {
   margin: 5%;
   display: flex;
@@ -11,4 +15,8 @@ body {
 
 .form-input {
   margin-bottom: 2%;
+}
+
+.category-links a {
+  text-decoration: none;
 }

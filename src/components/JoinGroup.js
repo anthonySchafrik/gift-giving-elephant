@@ -30,7 +30,7 @@ class JoinGroup extends Component {
     const { handleGroupInfo, handleJoinGroup } = this;
 
     return (
-      <div>
+      <div className="form-container">
         <h3>
           Please enter the Name and password of the group you are trying to
           join.
