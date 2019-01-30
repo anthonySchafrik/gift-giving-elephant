@@ -49,10 +49,9 @@ class HomePage extends Component {
       return (
         <div className="form-container">
           <p>
-            If you would like to make a new group, click New Group from the drop
-            down. If you are looking for your group or group info, click on My
-            Group. Assinged person will show you who you were assinged to and
-            there gift ideas.
+            If you would like to make a new group or check any info with them
+            click Group. Assigned person will show you who you were Assigned to
+            and their gift ideas.
           </p>
           <Link to="/Group">
             <button>Group</button>
@@ -60,7 +59,7 @@ class HomePage extends Component {
           <Link to="/Assigned">
             <button>Assigned Person</button>
           </Link>
-          <div>
+          <div className="form-container">
             <h3>What is the Gift Giving Elephant?</h3>
             <p>
               The idea behind the Elephant is to have everyone put their name
