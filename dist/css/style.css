@@ -3,6 +3,7 @@ body {
   width: 99%;
   background-color: rgb(32, 31, 38);
   color: lightgray;
+  font-family: 'Gloria Hallelujah', cursive;
 }
 
 div {
@@ -13,6 +14,12 @@ div {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.center {
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: center;
 }
 
 .form-container {
@@ -30,11 +37,17 @@ div {
   text-decoration: none;
 }
 
-.title {
+.logInTitle {
   margin-top: -15%;
   font-family: 'Tangerine', serif;
   font-size: 150px;
   color: rgb(214, 212, 228);
+}
+
+.title {
+  font-family: 'Tangerine', serif;
+  font-size: 150px;
+  text-align: center;
 }
 
 .displayButtons {
@@ -62,4 +75,25 @@ div {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.centerButtons {
+  width: 15%;
+  justify-content: space-evenly;
+  margin-left: 41%;
+}
+
+.containerBoxes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.boxes {
+  background-color: lightgray;
+  color: black;
+  width: 30%;
+  border-radius: 25px;
+  padding: 1em;
+  text-align: center;
 }

@@ -47,60 +47,73 @@ class HomePage extends Component {
 
     if (logedIn) {
       return (
-        <div className="form-container">
-          <p>
+        <div>
+          <p className="center">
             If you would like to make a new group or check any info with them
-            click Group. Assigned person will show you who you were Assigned to
-            and their gift ideas.
+            click "Group". "Assigned Person" will show you who you were Assigned
+            to and their gift ideas.
           </p>
-          <Link to="/Group">
-            <button>Group</button>
-          </Link>
-          <Link to="/Assigned">
-            <button>Assigned Person</button>
-          </Link>
-          <div className="form-container">
-            <h3>What is the Gift Giving Elephant?</h3>
-            <p>
-              The idea behind the Elephant is to have everyone put their name
-              into a bowl. Then one by one, names are picked from the bowl.
-              Everyone is given a set dollar amount they are allowed to spend on
-              the person they picked. Each person gives 3 ideas to help someone
-              pick out a gift for you.
-            </p>
-            <p>
-              There is an option that can be set up by your group admin called
-              "Who Can Math"; whoever can get the closest to spending the total
-              give amount will be given a prize!
-            </p>
+          <div className="center centerButtons">
+            <Link to="/Group">
+              <button stlye={{ margin: '3%' }} className="displayButtons">
+                Group
+              </button>
+            </Link>
+            <Link to="/Assigned">
+              <button className="displayButtons">Assigned Person</button>
+            </Link>
           </div>
-          <h3>Rules To The Game</h3>
-          <ol>
-            <li>You cannot go over the amount given.</li>
-            <li>
-              You cannot tell anyone who you picked until after all gifts are
-              passed out and opened.
-            </li>
-            <li>
-              You may trade gifts with anyone other than who you picked unless
-              that person asks you to trade.
-            </li>
-            <li>All gifts must show up to the event wrapped.</li>
-            <li>Last but not least - everyone have fun!</li>
-          </ol>
-          <img
-            src="../css/images/GGELogo.png"
-            alt="Site Logo"
-            width="700"
-            height="500"
-          />
+          <h1 className="title">Gift-Giving Elephant</h1>
+          <div className="form-container">
+            <img
+              style={{ marginTop: '-5%' }}
+              src="../css/images/logo.png"
+              alt="Site Logo"
+            />
+            <div className="containerBoxes">
+              <div className="boxes">
+                <h3>What is the Gift Giving Elephant?</h3>
+                <hr />
+                <p>
+                  The idea behind the Elephant is to have everyone put their
+                  name into a bowl. Then one by one, names are picked from the
+                  bowl. Everyone is given a set dollar amount they are allowed
+                  to spend on the person they picked. Each person gives 3 ideas
+                  to help someone pick out a gift for you.
+                </p>
+                <p>
+                  There is an option that can be set up by your group admin
+                  called "Who Can Math"; whoever can get the closest to spending
+                  the total give amount will be given a prize!
+                </p>
+              </div>
+
+              <div className="boxes">
+                <h3>Rules To The Game:</h3>
+                <hr />
+                <ol style={{ textAlign: 'left' }}>
+                  <li>You cannot go over the amount given.</li>
+                  <li>
+                    You cannot tell anyone who you picked until after all gifts
+                    are passed out and opened.
+                  </li>
+                  <li>
+                    You may trade gifts with anyone other than who you picked
+                    unless that person asks you to trade.
+                  </li>
+                  <li>All gifts must show up to the event wrapped.</li>
+                  <li>Last but not least - everyone have fun!</li>
+                </ol>
+              </div>
+            </div>
+          </div>
         </div>
       );
     } else {
       return (
         <div className="form-container">
-          <h1 className="title">Gift-Giving</h1>
-          <h1 style={{ marginTop: '-15%' }} className="title">
+          <h1 className="logInTitle">Gift-Giving</h1>
+          <h1 style={{ marginTop: '-15%' }} className="logInTitle">
             Elephant
           </h1>
           <div className="logIn">
