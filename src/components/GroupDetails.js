@@ -75,7 +75,13 @@ class GroupDetails extends Component {
             type="text"
             placeholder="Group Name"
           />
-          <button onClick={fetchUserGroupInfo}>Search</button>
+          <button
+            style={{ marginLeft: '1em' }}
+            className="displayButtons"
+            onClick={fetchUserGroupInfo}
+          >
+            Search
+          </button>
           {loading()}
         </div>
       );
@@ -83,7 +89,13 @@ class GroupDetails extends Component {
       return (
         <div>
           {userInfo()}
-          <button onClick={assignPeople}>Assign People</button>
+          <button
+            style={{ marginTop: '1em' }}
+            className="displayButtons"
+            onClick={assignPeople}
+          >
+            Assign People
+          </button>
         </div>
       );
     }

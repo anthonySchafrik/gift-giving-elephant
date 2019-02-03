@@ -64,7 +64,13 @@ class CreateGroup extends Component {
         <label>How many People?:</label>
         <input onChange={handleNewGroupOption} id="totalPeople" type="number" />
         <div />
-        <button onClick={handleCreateNewGroup}>Crate New Group</button>
+        <button
+          style={{ marginTop: '1em' }}
+          className="displayButtons"
+          onClick={handleCreateNewGroup}
+        >
+          Create New Group
+        </button>
       </div>
     );
   }

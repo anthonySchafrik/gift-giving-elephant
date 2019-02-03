@@ -50,7 +50,7 @@ class HomePage extends Component {
         <div>
           <p className="center">
             If you would like to make a new group or check any info with them
-            click "Group". "Assigned Person" will show you who you were Assigned
+            click "Group". "Assigned Person" will show you who you were assigned
             to and their gift ideas.
           </p>
           <div className="center centerButtons">
@@ -72,7 +72,7 @@ class HomePage extends Component {
             />
             <div className="containerBoxes">
               <div className="boxes">
-                <h3>What is the Gift Giving Elephant?</h3>
+                <h3>What is the Gift-Giving Elephant?</h3>
                 <hr />
                 <p>
                   The idea behind the Elephant is to have everyone put their

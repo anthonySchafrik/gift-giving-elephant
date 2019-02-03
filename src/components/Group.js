@@ -26,13 +26,25 @@ class Group extends Component {
     return (
       <div>
         <h3>Click button for options you are looking for.</h3>
-        <button onClick={handleGroupState} value="makeNewGroup">
+        <button
+          className="displayButtons"
+          onClick={handleGroupState}
+          value="makeNewGroup"
+        >
           Make New Group
         </button>
-        <button onClick={handleGroupState} value="joinGroup">
+        <button
+          className="displayButtons"
+          onClick={handleGroupState}
+          value="joinGroup"
+        >
           Join Group
         </button>
-        <button onClick={handleGroupState} value="groupAdmin">
+        <button
+          className="displayButtons"
+          onClick={handleGroupState}
+          value="groupAdmin"
+        >
           Group Admin
         </button>
         {whichGroupToRender()}

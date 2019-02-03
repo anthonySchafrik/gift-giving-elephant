@@ -28,10 +28,18 @@ class GroupAdmin extends Component {
           all is signed up click Group details.
         </p>
         <div>
-          <button onClick={handleInfoState} value="editGroup">
+          <button
+            className="displayButtons"
+            onClick={handleInfoState}
+            value="editGroup"
+          >
             Edit Group
           </button>
-          <button onClick={handleInfoState} value="groupDetails">
+          <button
+            className="displayButtons"
+            onClick={handleInfoState}
+            value="groupDetails"
+          >
             Group Details
           </button>
         </div>

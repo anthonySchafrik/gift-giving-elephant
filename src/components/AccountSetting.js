@@ -106,7 +106,13 @@ class AccountSetting extends Component {
             placeholder={hobbythree}
             id="hobbythree"
           />
-          <button onClick={submitUpedatedUser}>Update User</button>
+          <button
+            style={{ marginTop: '1em' }}
+            className="displayButtons"
+            onClick={submitUpedatedUser}
+          >
+            Update User
+          </button>
         </div>
       );
     } else {
@@ -114,7 +120,7 @@ class AccountSetting extends Component {
         <div>
           <h3>Log in to get account setting</h3>
           <Link to="/home">
-            <button>login</button>
+            <button className="displayButtons">login</button>
           </Link>
         </div>
       );

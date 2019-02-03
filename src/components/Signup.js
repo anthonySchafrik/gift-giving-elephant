@@ -111,7 +111,9 @@ class Signup extends Component {
           type="text-field"
           id="hobbyThree"
         />
-        <button onClick={handleUserSignUp}>Create User</button>
+        <button className="displayButtons" onClick={handleUserSignUp}>
+          Create User
+        </button>
       </div>
     );
   }

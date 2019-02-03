@@ -96,4 +96,11 @@ div {
   border-radius: 25px;
   padding: 1em;
   text-align: center;
+  height: 25em;
+}
+
+hr {
+  height: 1px;
+  background-color: black;
+  width: 40%;
 }

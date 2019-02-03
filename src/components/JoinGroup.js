@@ -41,7 +41,13 @@ class JoinGroup extends Component {
         <input onChange={handleGroupInfo} type="password" id="password" />
         <label>User Name: </label>
         <input onChange={handleGroupInfo} type="text" id="userName" />
-        <button onClick={handleJoinGroup}>Join Group</button>
+        <button
+          style={{ marginTop: '1em' }}
+          className="displayButtons"
+          onClick={handleJoinGroup}
+        >
+          Join Group
+        </button>
       </div>
     );
   }

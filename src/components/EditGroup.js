@@ -81,7 +81,13 @@ class EditGroup extends Component {
         <div>
           <h3>Enter name of Group you wish to edit.</h3>
           <input onChange={handleGroupName} type="text" id="name" />
-          <button onClick={handleFetchGroupinfo}>click</button>
+          <button
+            style={{ marginLeft: '1em' }}
+            className="displayButtons"
+            onClick={handleFetchGroupinfo}
+          >
+            click
+          </button>
         </div>
       );
     } else {
@@ -112,7 +118,7 @@ class EditGroup extends Component {
             placeholder={total}
           />
           <br />
-          <label>Cash perperson</label>
+          <label>Cash per person</label>
           <input
             id="totalCashAmount"
             onChange={handleNewGroupOption}
@@ -120,8 +126,20 @@ class EditGroup extends Component {
             placeholder={cash}
           />
           <br />
-          <button onClick={handleGroupUpdate}>Update Group</button>
-          <button onClick={toggleShowGroupInfo}>Clear Search</button>
+          <button
+            style={{ marginTop: '1em' }}
+            className="displayButtons"
+            onClick={handleGroupUpdate}
+          >
+            Update Group
+          </button>
+          <button
+            style={{ marginTop: '1em' }}
+            className="displayButtons"
+            onClick={toggleShowGroupInfo}
+          >
+            Clear Search
+          </button>
         </div>
       );
     }
