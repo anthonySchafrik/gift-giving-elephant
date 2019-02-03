@@ -99,14 +99,37 @@ class HomePage extends Component {
     } else {
       return (
         <div className="form-container">
-          <label>Username</label>
-          <input onChange={handleLogIn} type="text" id="username" />
-          <label>Password</label>
-          <input onChange={handleLogIn} type="password" id="password" />
-          <button onClick={LogInSubmit}>Log in</button>
-          <Link to="/SignUp">
-            <button>Sign up</button>
-          </Link>
+          <h1 className="title">Gift-Giving</h1>
+          <h1 style={{ marginTop: '-15%' }} className="title">
+            Elephant
+          </h1>
+          <div className="logIn">
+            <label className="font">Username</label>
+            <input onChange={handleLogIn} type="text" id="username" />
+            <div style={{ margin: 15 }} />
+            <label className="font">Password</label>
+            <input onChange={handleLogIn} type="password" id="password" />
+
+            <button
+              className="displayButtons"
+              style={{
+                width: 85,
+                height: 50,
+                marginLeft: '25%',
+                marginBottom: 5,
+                marginTop: 10
+              }}
+              onClick={LogInSubmit}
+            >
+              Log In
+            </button>
+
+            <Link to="/SignUp">
+              <button style={{ marginLeft: '25%' }} className="displayButtons">
+                Sign Up
+              </button>
+            </Link>
+          </div>
         </div>
       );
     }

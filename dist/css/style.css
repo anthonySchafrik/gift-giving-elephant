@@ -1,9 +1,18 @@
 body {
-  background-color: lightgray;
+  height: 100%;
+  width: 99%;
+  background-color: rgb(32, 31, 38);
+  color: lightgray;
 }
 
 div {
   display: inline;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form-container {
@@ -19,4 +28,38 @@ div {
 
 .category-links a {
   text-decoration: none;
+}
+
+.title {
+  margin-top: -15%;
+  font-family: 'Tangerine', serif;
+  font-size: 150px;
+  color: rgb(214, 212, 228);
+}
+
+.displayButtons {
+  color: rgb(32, 31, 38);
+  background-color: lightgray;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 12px;
+}
+
+.header {
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.font {
+  font-family: 'Gloria Hallelujah', cursive;
+  text-align: center;
+}
+
+.logIn {
+  margin-top: -20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

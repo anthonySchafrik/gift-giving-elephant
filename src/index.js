@@ -21,7 +21,7 @@ const store = createStore(reducers, applyMiddleware(thunk));
 ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
-      <div className="form-container">
+      <div className="container">
         <Header />
         <Switch>
           <Route path="/Account" component={AccountSetting} />

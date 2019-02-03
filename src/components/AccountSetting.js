@@ -72,14 +72,14 @@ class AccountSetting extends Component {
             placeholder={firstname}
             id="firstname"
           />
-          <label>Last Name</label>
+          {/* <label>Last Name</label>
           <input
             onChange={handleUserUpdate}
             placeholder={lastname}
             id="lastname"
           />
           <label>Email</label>
-          <input onChange={handleUserUpdate} placeholder={email} id="email" />
+          <input onChange={handleUserUpdate} placeholder={email} id="email" /> */}
           <label>Password</label>
           <input
             onChange={handleUserUpdate}

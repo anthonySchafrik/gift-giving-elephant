@@ -6,15 +6,16 @@ import { handleInfo, LOG_IN_INFO } from '../actions';
 
 const Header = props => {
   return (
-    <div>
+    <div className="header">
       <Link to="/">
-        <button>Home</button>
+        <button className="displayButtons">Home</button>
       </Link>
       <Link to="/Account">
-        <button>Account Setting</button>
+        <button className="displayButtons">Account Setting</button>
       </Link>
       <Link to="/">
         <button
+          className="displayButtons"
           onClick={() => {
             props.handleInfo('logedIn', false, LOG_IN_INFO);
           }}
