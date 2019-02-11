@@ -6,13 +6,15 @@ const {
   updateGroup
 } = require('../controllers/groupControllers.js');
 
+const apiBase = '/group';
+
 const router = express.Router();
 
 router.post('/newGroup', createGroup);
 
 router.post('/joinGroup', joinGroup);
 
-router.get('/getGroupInfo', getGroupInfo);
+router.get(apiBase, getGroupInfo);
 
 router.patch('/updateGroup', updateGroup);
 

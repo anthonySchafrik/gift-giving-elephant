@@ -7,22 +7,23 @@ const port = 2020;
 
 const groupRoutes = require('./routes/group.js');
 const usersRoutes = require('./routes/user.js');
-const userGroup = require('./routes/userGroup.js');
-const match = require('./routes/match.js');
+const userGroupRoutes = require('./routes/userGroup.js');
+const matchRoutes = require('./routes/match.js');
 
 const log = console.log;
+const apiBase = '/api/v1';
 
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static(path.join(__dirname, '../dist')));
 
-app.use('/', groupRoutes);
+app.use(apiBase, groupRoutes);
 
-app.use('/', usersRoutes);
+app.use(apiBase, usersRoutes);
 
-app.use('/', userGroup);
+app.use(apiBase, userGroupRoutes);
 
-app.use('/', match);
+app.use(apiBase, matchRoutes);
 
 app.listen(port, () => {
   log(`server is listing on port ${port}`);

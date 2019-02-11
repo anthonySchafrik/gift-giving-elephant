@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { handleInfo, LOG_IN_INFO } from '../actions';
+import { login } from '../proxies/login';
 
 class HomePage extends Component {
   constructor(props) {
@@ -25,13 +26,15 @@ class HomePage extends Component {
 
   LogInSubmit() {
     const { username, password } = this.props.logInInfo;
-    axios
-      .get(`/logUserIn`, {
-        params: {
-          username,
-          password
-        }
-      })
+
+    login({ username, password })
+      // axios
+      //   .get(`/logUserIn`, {
+      //     params: {
+      //       username,
+      //       password
+      //     }
+      //   })
       .then(res => {
         if (res.data === true) {
           this.handleSuccessfullLogIn('logedIn', true);

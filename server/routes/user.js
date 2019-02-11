@@ -6,14 +6,16 @@ const {
   userInfo
 } = require('../controllers/userController.js');
 
+const apiBase = '/user';
+
 const router = express.Router();
 
-router.post('/createUser', createUser);
+router.get(apiBase, userInfo);
 
-router.patch('/updateUser', updateUser);
+router.post(apiBase, createUser);
 
-router.get('/logUserIn', logUserIn);
+router.patch(apiBase, updateUser);
 
-router.get('/userInfo', userInfo);
+router.get(`${apiBase}/login`, logUserIn);
 
 module.exports = router;
