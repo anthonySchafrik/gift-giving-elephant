@@ -1,4 +1,5 @@
 import { getGroupInfo } from '../proxies/group';
+import { getUserInfo } from '../proxies/fetchUser';
 import regeneratorRuntime from 'regenerator-runtime';
 
 export const FETCH_GROUP_INFO = 'FETCH_GROUP_INFO';
@@ -17,7 +18,7 @@ export const fetchGroupInfo = name => async dispatch => {
 };
 
 export const fetchUserInfo = user => async dispatch => {
-  const responce = await getUserInfo.get(`/?user=${user}`);
+  const responce = await getUserInfo({ user });
 
   dispatch({ type: FETCH_USER_INFO, payload: responce.data[0] });
 };

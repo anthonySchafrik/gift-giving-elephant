@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 import { handleInfo, SIGN_UP_INFO } from '../actions';
+import { sighUp } from '../proxies/createUser';
 
 class Signup extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class Signup extends Component {
     const { signUpInfo } = this.props;
 
     if (this.passwordCheck()) {
-      axios.post('/createUser', signUpInfo).then(res => {
+      sighUp(signUpInfo).then(res => {
         alert(res.data);
       });
     } else {

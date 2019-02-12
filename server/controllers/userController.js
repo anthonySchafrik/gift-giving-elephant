@@ -54,7 +54,7 @@ module.exports.updateUser = (req, res) => {
 
 module.exports.logUserIn = (req, res) => {
   const { username, password } = req.query;
-  console.log(username, password);
+
   let sql = `SELECT * FROM Users WHERE username = '${username}';`;
 
   db.query(sql, (err, result) => {

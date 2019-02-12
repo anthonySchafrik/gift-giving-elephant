@@ -1,5 +1,5 @@
 import api from './api';
 
 export function sighUp(user) {
-  return api.post('/createUser', user);
+  return api.post('/user', user);
 }
