@@ -10,12 +10,12 @@ const apiBase = '/group';
 
 const router = express.Router();
 
-router.post('/newGroup', createGroup);
+router.post(`${apiBase}/createGroup`, createGroup);
 
-router.post('/joinGroup', joinGroup);
+router.post(`${apiBase}/joinGroup`, joinGroup);
 
 router.get(apiBase, getGroupInfo);
 
-router.patch('/updateGroup', updateGroup);
+router.patch(`${apiBase}/updateGroup`, updateGroup);
 
 module.exports = router;

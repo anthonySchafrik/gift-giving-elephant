@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 
 import { handleInfo, NEW_GROUP_INFO } from '../actions';
+import { createNewGroup } from '../proxies/createGroup';
 
 class CreateGroup extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class CreateGroup extends Component {
     const { newGroup } = this.props;
 
     if (this.passwordCheck()) {
-      axios.post('/newGroup', newGroup).then(res => {
+      createNewGroup(newGroup).then(res => {
         alert(res.data);
       });
     } else {
