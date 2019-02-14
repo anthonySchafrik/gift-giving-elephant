@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchGroupName } from '../actions';
-import { generateRandomNumber, groupFilter } from '../utils';
 import { fetchUserGroup } from '../proxies/userGroupInfo';
+import { matchUsers } from '../proxies/matchUsers';
 
 class GroupDetails extends Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class GroupDetails extends Component {
   assignPeople() {
     const { groupDetails: group } = this.state;
 
-    axios.post('/matchedUsers', group).then(res => {
+    matchUsers(group).then(res => {
       alert(res.data);
     });
   }
