@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 
 import { fetchUserInfo } from '../actions';
+import { fetchMatch } from '../proxies/fetchMatch';
 
 class AssignedPerson extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class AssignedPerson extends Component {
     if (username !== '') {
       this.props.fetchUserInfo(username).then(() => {
         let userId = this.props.userInfo.id;
-        axios.get(`/getMatch/?userId=${userId}`).then(res => {
+        fetchMatch(userId).then(res => {
           this.setState({ match: res.data });
         });
       });
