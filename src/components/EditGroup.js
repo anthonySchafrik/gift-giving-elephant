@@ -54,9 +54,6 @@ class EditGroup extends Component {
     updateGroup(updateGroupInfo).then(res => {
       alert(res.data);
     });
-    // axios.patch('/updateGroup', updateGroup).then(res => {
-    //   alert(res.data);
-    // });
   }
 
   handleNewGroupOption(event) {

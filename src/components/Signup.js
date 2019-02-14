@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { handleInfo, SIGN_UP_INFO } from '../actions';
-import { sighUp } from '../proxies/createUser';
+import { createUser } from '../proxies/createUser';
 
 class Signup extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class Signup extends Component {
     const { signUpInfo } = this.props;
 
     if (this.passwordCheck()) {
-      sighUp(signUpInfo).then(res => {
+      createUser(signUpInfo).then(res => {
         alert(res.data);
       });
     } else {

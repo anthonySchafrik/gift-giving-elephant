@@ -1,5 +1,5 @@
 import api from './api';
 
-export function sighUp(user) {
+export function createUser(user) {
   return api.post('/user', user);
 }
