@@ -1,5 +1,5 @@
 import api from './api';
 
-export function getGroupInfo(query) {
-  return api.get('/group', query);
+export function getGroupInfo(group) {
+  return api.get('/group', { params: { ...group } });
 }

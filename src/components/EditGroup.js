@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 
 import {
   fetchGroupName,
@@ -8,6 +7,7 @@ import {
   handleInfo,
   NEW_GROUP_INFO
 } from '../actions';
+import { updateGroup } from '../proxies/editGroup';
 
 class EditGroup extends Component {
   constructor(props) {
@@ -43,7 +43,7 @@ class EditGroup extends Component {
       totalPeople
     } = this.props.updateGroup;
 
-    let updateGroup = {
+    let updateGroupInfo = {
       id: id,
       groupName: groupName || name,
       groupPass: groupPass || password,
@@ -51,9 +51,12 @@ class EditGroup extends Component {
       totalPeople: total || totalPeople
     };
 
-    axios.patch('/updateGroup', updateGroup).then(res => {
+    updateGroup(updateGroupInfo).then(res => {
       alert(res.data);
     });
+    // axios.patch('/updateGroup', updateGroup).then(res => {
+    //   alert(res.data);
+    // });
   }
 
   handleNewGroupOption(event) {
