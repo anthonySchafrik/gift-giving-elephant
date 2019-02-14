@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 
 import { fetchGroupName } from '../actions';
 import { generateRandomNumber, groupFilter } from '../utils';
+import { fetchUserGroup } from '../proxies/userGroupInfo';
 
 class GroupDetails extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class GroupDetails extends Component {
 
     this.setState({ isLoading: true });
 
-    axios.get(`/userGroupInfo/?group=${group}`).then(res => {
+    fetchUserGroup(group).then(res => {
       this.setState({ groupDetails: res.data });
     });
   }
