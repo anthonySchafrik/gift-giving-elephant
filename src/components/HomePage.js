@@ -26,21 +26,13 @@ class HomePage extends Component {
   LogInSubmit() {
     const { username, password } = this.props.logInInfo;
 
-    login({ username, password })
-      // axios
-      //   .get(`/logUserIn`, {
-      //     params: {
-      //       username,
-      //       password
-      //     }
-      //   })
-      .then(res => {
-        if (res.data === true) {
-          this.handleSuccessfullLogIn('logedIn', true);
-        } else {
-          alert(res.data);
-        }
-      });
+    login({ username, password }).then(res => {
+      if (res.data === true) {
+        this.handleSuccessfullLogIn('logedIn', true);
+      } else {
+        alert(res.data);
+      }
+    });
   }
 
   render() {
