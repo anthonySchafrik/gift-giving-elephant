@@ -104,3 +104,23 @@ hr {
   background-color: black;
   width: 40%;
 }
+
+@media screen and (max-width: 1400px) {
+  .header {
+    width: 30%;
+  }
+
+  .displayButtons {
+    font-size: 17px;
+  }
+
+  .boxes {
+    height: 29em;
+  }
+}
+
+@media screen and (max-width: 1380px) {
+  .displayButtons {
+    font-size: 15px;
+  }
+}
