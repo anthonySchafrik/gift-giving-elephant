@@ -25,6 +25,10 @@ app.use(apiBase, userGroupRoutes);
 
 app.use(apiBase, matchRoutes);
 
+app.get('/*', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, '../dist/index.html'));
+});
+
 app.listen(port, () => {
   log(`server is listing on port ${port}`);
 });
